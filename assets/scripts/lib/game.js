@@ -1,4 +1,4 @@
-import Player from './player';
+import Player from './player.js';
 
 const Game = (() => {
   let p1 = null;
