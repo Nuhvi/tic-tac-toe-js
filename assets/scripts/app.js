@@ -1,7 +1,7 @@
 'use-strict';
 
 const Board = (() => {
-  const state = [
+  let state = [
     [null, null, null],
     [null, null, null],
     [null, null, null],
@@ -13,9 +13,18 @@ const Board = (() => {
     state[row][column] = mark;
   };
 
+  const reset = () => {
+    state = [
+      [null, null, null],
+      [null, null, null],
+      [null, null, null],
+    ];
+  };
+
   return {
     get,
     set,
+    reset,
   };
 })();
 
