@@ -4,10 +4,19 @@ import UI from './lib/ui.js';
 import Game from './lib/game.js';
 
 // listeners for player names
+const form = document.getElementById('form');
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
+  const names = [...form.elements].map((element) => element.value);
+  form.reset();
 
-const p1 = Player('player1', 'x');
-const p2 = Player('player2', 'o');
-Game.initializePlayers(p1, p2);
+  let p1 = Player(names[0], 'x');
+  let p2 = Player(names[1], 'o');
+  
+  Game.initializePlayers(p1, p2);
+  console.log(Game.getCurrentPlayer().getName());
+});
+
 
 document.querySelectorAll('.cell').forEach((cell) => {
   cell.addEventListener('click', () => {

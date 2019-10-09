@@ -32,6 +32,19 @@
             <h5 class="score">
                 <span> Player2 </span><span>0</span>
             </h5>
+
+            <div class="player-info">
+                <form id="form" action="#" method="post">
+                    <div class="input-field">
+                        <input type="text" name="player1" placeholder="Enter Player 1's Name" maxlength="10">
+                    </div>
+                    <div class="input-field">
+                        <input type="text" name="player2" placeholder="Enter Player 2's Name" maxlength="10">
+                    </div>
+                    <input type="submit" class="play">Play</input>
+                </form>
+            </div>
+            <button class="reset">Reset</button>
         </div>
 
     </main>
@@ -40,9 +53,6 @@
             github
         </div>
     </footer>
-    <script type="module" src="assets/scripts/lib/board.js"></script>
-    <script type="module" src="assets/scripts/lib/player.js"></script>
-    <script type="module" src="assets/scripts/lib/game.js"></script>
     <script type="module" src="assets/scripts/app.js"></script> <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </body>
