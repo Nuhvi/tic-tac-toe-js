@@ -1,5 +1,5 @@
 const Board = (() => {
-  let state = [0, 0, 0, 3, 4, 5, 6, 7, 8];
+  let state = Array(9);
   const get = () => state;
   const set = (index, mark) => {
     state[index] = mark;
@@ -10,24 +10,20 @@ const Board = (() => {
 
   const getRow = (cell) => {
     cell = Math.floor(cell / 3) * 3;
-    return [state[cell], state[cell + 1], state[cell + 2]];
+    return [cell, cell + 1, cell + 2];
   };
 
   const getCol = (cell) => {
     cell %= 3;
-    return [state[cell], state[cell + 3], state[cell + 6]];
+    return [cell, cell + 3, cell + 6];
   };
 
   const getDiagonals = (cell) => {
     const res = [];
 
-    if (cell % 4 === 0) {
-      res.push([state[0], state[4], state[8]]);
-    } else {
-      res.push([state[2], state[4], state[6]]);
-    }
+    res.push(cell % 4 === 0 ? [0, 4, 8] : [2, 4, 6]);
 
-    if (cell === 4) res.push([state[2], state[4], state[6]]);
+    if (cell === 4) res.push([2, 4, 6]);
 
     return res;
   };

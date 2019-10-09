@@ -6,6 +6,7 @@ const Game = (() => {
   let p2;
   let currentPlayer;
   let movesCount = 0;
+  let winningStreak;
 
 
   const initializePlayers = (player1, player2) => {
@@ -14,19 +15,25 @@ const Game = (() => {
     currentPlayer = p1;
   };
 
-  const getCurrentPlayer = () => {
-    return currentPlayer;
-  }
+  const getCurrentPlayer = () => currentPlayer;
+  const getWinningStreak = () => winningStreak;
 
-  const win = (rowColDiagonals) => {
-    return rowColDiagonals.some(x => x.every( x=> x === currentPlayer.mark()) );
+  const threeInRow = (cell) => {
+    Board.getRowColDiagonals(cell).forEach((arr) => {
+      if (arr.every((el) => Board.get()[el] === currentPlayer.mark())) {
+        winningStreak = arr;
+        // eslint-disable-next-line no-useless-return
+        return;
+      }
+    });
+    return winningStreak;
   };
 
   let status = 'continue';
   const getStatus = () => status;
   const updateStatus = (cell) => {
     if (movesCount >= 9) status = 'draw';
-    if (win(Board.getRowColDiagonals(cell))) status = 'win';
+    if (threeInRow(cell)) status = 'win';
   };
 
   const switchPlayer = () => {
@@ -41,11 +48,11 @@ const Game = (() => {
   };
 
   return {
-    win,
     initializePlayers,
     markCell,
     getStatus,
-    getCurrentPlayer
+    getCurrentPlayer,
+    getWinningStreak,
   };
 })();
 

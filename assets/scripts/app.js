@@ -4,7 +4,6 @@ import UI from './lib/ui.js';
 import Game from './lib/game.js';
 
 
-
 // Tests
 // Game.initializePlayers(Player('P1', 0), Player('P2', 1));
 // Game.win(Board.getRowColDiagonals(0));
