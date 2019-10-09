@@ -4,6 +4,13 @@ import UI from './lib/ui.js';
 import Game from './lib/game.js';
 
 
+
+// Tests
+// Game.initializePlayers(Player('P1', 0), Player('P2', 1));
+// Game.win(Board.getRowColDiagonals(0));
+
+//
+
 // Initiate Players names
 // const p1 = Player(UI.getPlayersNames[0], 0);
 

@@ -2,25 +2,24 @@
 import Board from './board.js';
 
 const Game = (() => {
-  let p1 = null;
-  let p2 = null;
-  let currentPlayer = p1;
+  let p1;
+  let p2;
+  let currentPlayer;
+  let movesCount = 0;
 
 
   const initializePlayers = (player1, player2) => {
     p1 = player1;
     p2 = player2;
+    currentPlayer = p1;
   };
 
-  let movesCount = 0;
+  const getCurrentPlayer = () => {
+    return currentPlayer;
+  }
 
   const win = (rowColDiagonals) => {
-    rowColDiagonals.forEach((arr) => {
-      if (arr.filter((x) => x === currentPlayer.mark).length) {
-        return true;
-      }
-      return false;
-    });
+    return rowColDiagonals.some(x => x.every( x=> x === currentPlayer.mark()) );
   };
 
   let status = 'continue';
@@ -34,7 +33,7 @@ const Game = (() => {
     currentPlayer = currentPlayer === p1 ? p2 : p1;
   };
 
-  const MarkCell = (cell) => {
+  const markCell = (cell) => {
     Board.set(cell, currentPlayer.mark());
     if (movesCount < 9) movesCount += 1;
     updateStatus(cell);
@@ -42,10 +41,11 @@ const Game = (() => {
   };
 
   return {
+    win,
     initializePlayers,
-    MarkCell,
+    markCell,
     getStatus,
-    currentPlayer,
+    getCurrentPlayer
   };
 })();
 
