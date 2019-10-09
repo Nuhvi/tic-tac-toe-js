@@ -36,4 +36,21 @@ main.container {
   background-color: grey;
   border-radius: 5px;
 }
+
+#board .cell.X {
+  background-color: red;
+}
+
+#board .cell.O {
+  background-color: green;
+}
+
+.score {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
 /*# sourceMappingURL=main.css.map */

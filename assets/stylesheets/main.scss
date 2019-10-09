@@ -25,6 +25,17 @@ main {
         padding-top: 100%;
         background-color: grey;
         border-radius: 5px;
+        &.X{
+            background-color: red;
+        }
+        &.O{
+            background-color: green;
+        }
     }
 
+}
+
+.score {
+    display: flex;
+    justify-content: space-between;
 }

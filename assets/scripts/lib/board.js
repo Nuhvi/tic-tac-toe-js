@@ -1,19 +1,11 @@
 const Board = (() => {
-  let state = [
-    [null, null, null],
-    [null, null, null],
-    [null, null, null],
-  ];
+  let state = Array(9);
   const get = () => state;
-  const set = (row, column, mark) => {
-    state[row][column] = mark;
+  const set = (index, mark) => {
+    state[index] = mark;
   };
   const reset = () => {
-    state = [
-      [null, null, null],
-      [null, null, null],
-      [null, null, null],
-    ];
+    state = Array(9);
   };
 
   return {

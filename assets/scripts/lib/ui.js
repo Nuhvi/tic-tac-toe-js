@@ -1,21 +1,13 @@
 const UI = (() => {
-  const renderBoard = (board) => {
-    let html = '';
-    board.forEach((row) => {
-      row.forEach((cell) => {
-        html += `<div class="cell" data-id="${cellId}">${cell}</div>`;
-      });
-    });
-    return html;
+  const renderCell = (cell, mark) => {
+    document.body.querySelector(`.cell[data-id="${cell}"]`).classList.add(`${mark}`);
   };
 
-  const display = (board) => {
-    document.getElementById('board').innerHTML = renderBoard(board);
-  };
   const getPlayersNames = () => ['player_1', 'player_2'];
+
   return {
     getPlayersNames,
-    display,
+    renderCell,
   };
 })();
 
