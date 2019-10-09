@@ -1,3 +1,4 @@
+/* eslint-disable import/extensions */
 import Player from './player.js';
 
 const Game = (() => {
@@ -9,6 +10,7 @@ const Game = (() => {
   };
   const playersScores = () => [p1.score(), p2.score()];
   const playersNames = () => [p1.name(), p2.name()];
+
   return { initialize, playersScores, playersNames };
 })();
 

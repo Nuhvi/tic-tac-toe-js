@@ -1,15 +1,14 @@
 const UI = (() => {
   const renderBoard = (board) => {
-    let html = '<table>';
+    let html = '';
     board.forEach((row) => {
-      html += '<tr>';
       row.forEach((cell) => {
-        html += `<td>${cell}</td>`;
+        html += `<div class="cell" data-id="${cellId}">${cell}</div>`;
       });
-      html += '</tr>';
     });
-    return `${html}</table>`;
+    return html;
   };
+
   const display = (board) => {
     document.getElementById('board').innerHTML = renderBoard(board);
   };

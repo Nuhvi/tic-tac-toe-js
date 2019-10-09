@@ -15,6 +15,7 @@ const Board = (() => {
       [null, null, null],
     ];
   };
+
   return {
     get,
     set,

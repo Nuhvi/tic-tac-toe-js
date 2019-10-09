@@ -6,6 +6,7 @@ const Player = (_name, _mark, _score = 0) => {
   const changeMark = () => {
     _mark = _mark === 0 ? 1 : 0;
   };
+
   return {
     name, mark, score, updateScore, changeMark,
   };

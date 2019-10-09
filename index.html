@@ -1,14 +1,38 @@
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Tic Tac Toe</title>
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 
     <link rel="stylesheet" href="assets/stylesheets/main.css">
 </head>
-<body>
-    <div id="board"></div>
-    <script type="module" src="assets/scripts/app.js"></script>
+
+<body class="grey darken-3 white-text">
+    <main class="container center-align">
+        <h1>Tic Tac Toe</h1>
+        <div id="board" >
+            <div data-id="0" class="cell"></div>
+            <div data-id="1" class="cell"></div>
+            <div data-id="2" class="cell"></div>
+            <div data-id="3" class="cell"></div>
+            <div data-id="4" class="cell"></div>
+            <div data-id="5" class="cell"></div>
+            <div data-id="6" class="cell"></div>
+            <div data-id="7" class="cell"></div>
+            <div data-id="8" class="cell"></div>
+        </div>
+    </main>
+    <footer class="footer-page">
+        <div class="container center-align">
+            github
+        </div>
+    </footer>
+    <script type="module" src="assets/scripts/app.js"></script> <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </body>
+
 </html>

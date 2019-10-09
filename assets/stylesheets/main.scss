@@ -1,0 +1,30 @@
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+main {
+    flex: 1 0 auto;
+
+    &.container {
+        max-width: 375px;
+    }
+}
+
+#board {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 20px;
+    border: 10px solid grey;
+    border-radius: 20px;
+    padding: 20px;
+
+    .cell {
+        padding-top: 100%;
+        background-color: grey;
+        border-radius: 5px;
+    }
+
+}
