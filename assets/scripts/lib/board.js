@@ -1,9 +1,12 @@
 const Board = (() => {
   let state = Array(9);
-  const get = () => state;
+
   const set = (index, mark) => {
     state[index] = mark;
   };
+
+  const getCell = (cell) => state[cell];
+
   const reset = () => {
     state = Array(9);
   };
@@ -36,11 +39,12 @@ const Board = (() => {
     return res.concat(getDiagonals(cell));
   };
 
+
   return {
-    get,
     set,
     reset,
     getRowColDiagonals,
+    getCell,
   };
 })();
 

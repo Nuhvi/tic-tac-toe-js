@@ -1,14 +1,14 @@
-const Player = (_name, _mark, _score = 0) => {
-  const name = () => _name;
-  const mark = () => _mark;
-  const score = () => _score;
-  const updateScore = () => { _score += 1; };
+const Player = (name, mark, score = 0) => {
+  const getName = () => name;
+  const getMark = () => mark;
+  const getScore = () => score;
+  const updateScore = () => { score += 1; };
   const changeMark = () => {
-    _mark = _mark === 0 ? 1 : 0;
+    mark = mark === 'x' ? 'o' : 'x';
   };
 
   return {
-    name, mark, score, updateScore, changeMark,
+    getName, getMark, getScore, updateScore, changeMark,
   };
 };
 

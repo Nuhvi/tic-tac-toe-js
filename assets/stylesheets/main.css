@@ -37,11 +37,11 @@ main.container {
   border-radius: 5px;
 }
 
-#board .cell.X {
+#board .cell.x {
   background-color: red;
 }
 
-#board .cell.O {
+#board .cell.o {
   background-color: green;
 }
 

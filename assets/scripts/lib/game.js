@@ -7,7 +7,7 @@ const Game = (() => {
   let currentPlayer;
   let movesCount = 0;
   let winningStreak;
-
+  let gameNotOver = true;
 
   const initializePlayers = (player1, player2) => {
     p1 = player1;
@@ -17,10 +17,11 @@ const Game = (() => {
 
   const getCurrentPlayer = () => currentPlayer;
   const getWinningStreak = () => winningStreak;
+  const getGameNotOver = () => gameNotOver;
 
   const threeInRow = (cell) => {
     Board.getRowColDiagonals(cell).forEach((arr) => {
-      if (arr.every((el) => Board.get()[el] === currentPlayer.mark())) {
+      if (arr.every((el) => Board.getCell(el) === currentPlayer.getMark())) {
         winningStreak = arr;
         // eslint-disable-next-line no-useless-return
         return;
@@ -29,28 +30,29 @@ const Game = (() => {
     return winningStreak;
   };
 
-  let status = 'continue';
-  const getStatus = () => status;
-  const updateStatus = (cell) => {
-    if (movesCount >= 9) status = 'draw';
-    if (threeInRow(cell)) status = 'win';
-  };
 
   const switchPlayer = () => {
     currentPlayer = currentPlayer === p1 ? p2 : p1;
   };
 
+  const validMove = (cell) => !Board.getCell(cell);
+
   const markCell = (cell) => {
-    Board.set(cell, currentPlayer.mark());
-    if (movesCount < 9) movesCount += 1;
-    updateStatus(cell);
-    if (status === 'continue') switchPlayer();
+    if (validMove(cell)) {
+      Board.set(cell, currentPlayer.getMark());
+      if (movesCount < 9) movesCount += 1;
+      if (movesCount >= 9 || threeInRow(cell)) gameNotOver = false;
+      if (gameNotOver) switchPlayer();
+      return true;
+    }
+    return false;
   };
+
 
   return {
     initializePlayers,
     markCell,
-    getStatus,
+    getGameNotOver,
     getCurrentPlayer,
     getWinningStreak,
   };
