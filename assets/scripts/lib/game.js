@@ -47,7 +47,7 @@ const Game = (() => {
 		if (validMove(cell)) {
 			Board.set(cell, currentPlayer.getMark());
 			if (movesCount < 9) movesCount += 1;
-			if (movesCount >= 9 || threeInRow(cell)) gameNotOver = false;
+			if (threeInRow(cell) || movesCount >= 9) gameNotOver = false;
 			if (gameNotOver) switchPlayer();
 			return true;
 		}
