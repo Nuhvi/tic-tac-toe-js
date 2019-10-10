@@ -13,16 +13,42 @@
           box-shadow: none;
 }
 
+header h1 {
+  margin: 32px 0 0 0;
+  font-family: 'Work Sans', sans-serif;
+  font-size: 3rem;
+  letter-spacing: 8px;
+}
+
+header .score {
+  max-width: 330px;
+  margin: auto;
+}
+
+header .score #score {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 0px 24px;
+  height: 48px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-weight: bold;
+}
+
+header .score #underline {
+  height: 3px;
+  width: 165px;
+}
+
 .card-content {
   -webkit-box-flex: 1;
       -ms-flex: 1 0 auto;
           flex: 1 0 auto;
-}
-
-h1 {
-  font-family: 'Work Sans', sans-serif;
-  font-size: 3rem;
-  font-weight: bold;
 }
 
 #board {
@@ -84,38 +110,9 @@ h1 {
   font-size: 5rem;
 }
 
-#score {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-}
-
-#score span {
-  font-weight: bold;
-}
-
 .card-reveal button.card-title {
   font-size: 14px;
   margin: auto;
   font-weight: 400;
-}
-
-.card-reveal footer {
-  bottom: 1rem;
-  position: absolute;
-  left: 0;
-  width: 100%;
-}
-
-.card-reveal footer .container {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
 }
 /*# sourceMappingURL=main.css.map */

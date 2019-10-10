@@ -17,15 +17,18 @@
 
 <body>
     <div class="card center-align">
-        <header class="container activator">
+        <header class="activator">
             <h1 class=" activator ">
                 TIC TAC TOE
             </h1>
-            <div id="score" class="card-content">
-                <span>Player 1</span>
-                <span>0</span>
-                <span>0</span>
-                <span>Player 2</span>
+            <div class="score">
+                <div id="score">
+                    <span>Player 1</span>
+                    <span>0</span>
+                    <span>0</span>
+                    <span>Player 2</span>
+                </div>
+                <div class="red " id="underline"></div>
             </div>
         </header>
 
@@ -43,48 +46,46 @@
             </div>
         </main>
         <span class=" card-title activator grey-text text-darken-4">
-            <i class="material-icons">menu</i>
+            <i class="material-icons ">remove</i>
+            <i class="material-icons ">settings</i>
+            <i class="material-icons ">remove</i>
+            <br>
+            <br>
         </span>
-        <div class="card-reveal">
+
+        <footer class="card-reveal">
             <span class="card-title grey-text text-darken-4 left-align">
                 Settings
                 <i class="material-icons right">close</i>
             </span>
-            <div class="card-content ">
-                <div class="player-info ">
-                    <form id="form" action="#" method="post">
-                        <div class="input-field">
-                            <input class="materialize-input center-align" type="text" name="player1"
-                                placeholder="Player 1" maxlength="10">
-                        </div>
-                        <div class="input-field">
-                            <input class="materialize-input center-align" type="text" name="player1"
-                                placeholder="Player 2" maxlength="10">
-                        </div>
-                        <div class="input-field">
-                            <button class="card-title  btn blue-grey waves-effect waves-light" type="submit" name="action">
-                                Set Players Names
-                            </button>
-                        </div>
+            <div class="player-info ">
+                <form id="form" action="#" method="post">
+                    <div class="input-field">
+                        <input class="materialize-input center-align" type="text" name="player1" placeholder="Player 1"
+                            maxlength="10">
+                    </div>
+                    <div class="input-field">
+                        <input class="materialize-input center-align" type="text" name="player1" placeholder="Player 2"
+                            maxlength="10">
+                    </div>
+                    <div class="input-field">
+                        <button class="card-title  btn blue-grey waves-effect waves-light" type="submit" name="action">
+                            Set Players Names
+                        </button>
+                    </div>
 
-                    </form>
-
-                </div>
+                </form>
 
             </div>
-            <footer>
-                <div class="container">
-                    <a href="https://github.com/Nazeh/tic-tac-toe-js" class="card-title grey-text text-darken-4">
-                        <img src="assets/images/github.png" alt="">
-                        Source
-                    </a>
-                    <span class="card-title grey-text text-darken-4 close-reveal">
 
-                        Back to Game
-                    </span>
-                </div>
-            </footer>
-        </div>
+            <a href="https://github.com/Nazeh/tic-tac-toe-js" class="card-title grey-text text-darken-4">
+                <img src="assets/images/github.png" alt="">
+                Source
+            </a>
+            <span class="card-title grey-text text-darken-4 close-reveal">
+                Back to Game
+            </span>
+        </footer>
     </div>
     <script type="module" src="assets/scripts/app.js"></script> <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>

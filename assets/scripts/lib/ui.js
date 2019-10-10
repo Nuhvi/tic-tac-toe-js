@@ -2,6 +2,7 @@ const UI = (() => {
   const board = document.getElementById('board');
   const cells = Array.from(board.children);
   const score = document.getElementById('score');
+  const underline = document.getElementById('underline');
 
   const getCells = () => cells;
 
