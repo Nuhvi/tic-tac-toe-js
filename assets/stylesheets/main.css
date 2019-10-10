@@ -89,6 +89,10 @@ footer a img {
   content: "O";
 }
 
+#board .cell.marked.win::before {
+  color: red;
+}
+
 #board.active .cell::before {
   color: black;
 }

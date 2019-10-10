@@ -75,6 +75,12 @@ footer {
                     content: "O";
                 }
             }
+
+            &.win {
+                &::before {
+                    color: red;
+                }
+            }
         }
     }
 

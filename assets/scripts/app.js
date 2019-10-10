@@ -7,11 +7,10 @@ import Board from './lib/board.js';
 let p1;
 let p2;
 const form = document.getElementById('form');
-const board = document.getElementById('board');
-const cells = Array.from(board.children);
+const cells = UI.getCells();
 
 const startGame = () => {
-  UI.resetBoard(board, cells);
+  UI.resetBoard();
   UI.updateScore(p1, p2);
   Board.reset();
   Game.initialize(p1, p2);
@@ -21,22 +20,18 @@ cells.forEach((cell) => {
   cell.addEventListener('click', () => {
     if (Game.getGameNotOver()) {
       const cellId = cell.getAttribute('data-id');
-
       const lastPlayer = Game.getCurrentPlayer();
 
       if (Game.markCell(cellId)) UI.renderCell(cell, lastPlayer.getMark());
 
-
       if (!Game.getGameNotOver()) {
-        UI.deactivateBoard(board);
-        if (Game.getWinningStreak()) {
+        UI.deactivateBoard();
+        const winningStreak = Game.getWinningStreak();
+        if (winningStreak) {
           lastPlayer.updateScore();
           UI.updateScore(p1, p2);
-
-          console.log(Game.getWinningStreak());
+          UI.colorWinner(winningStreak);
         } else {
-          console.log(p1.getScore());
-          console.log(p2.getScore());
           console.log('Tie');
         }
       }
@@ -49,8 +44,8 @@ form.addEventListener('submit', (e) => {
   const names = [...form.elements].map((element) => element.value);
   form.reset();
 
-  p1 = Player(names[0] === '' ? 'Player 1' : names[0], 'x');
-  p2 = Player(names[0] === '' ? 'Player 2' : names[0], 'o');
+  p1 = Player(names[1] === '' ? 'Player 1' : names[1], 'x');
+  p2 = Player(names[2] === '' ? 'Player 2' : names[2], 'o');
 
   startGame();
 });
