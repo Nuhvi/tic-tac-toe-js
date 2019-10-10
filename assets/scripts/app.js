@@ -4,8 +4,6 @@ import UI from './lib/ui.js';
 import Game from './lib/game.js';
 import Board from './lib/board.js';
 
-// listeners for player names
-
 let p1;
 let p2;
 const form = document.getElementById('form');
@@ -14,6 +12,7 @@ const cells = Array.from(board.children);
 
 const startGame = () => {
   UI.resetBoard(board, cells);
+  UI.updateScore(p1, p2);
   Board.reset();
   Game.initialize(p1, p2);
 };
@@ -32,9 +31,8 @@ cells.forEach((cell) => {
         UI.deactivateBoard(board);
         if (Game.getWinningStreak()) {
           lastPlayer.updateScore();
-          UI.updateScore();
-          console.log(p1.getScore());
-          console.log(p2.getScore());
+          UI.updateScore(p1, p2);
+
           console.log(Game.getWinningStreak());
         } else {
           console.log(p1.getScore());

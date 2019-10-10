@@ -25,6 +25,23 @@ main.container {
   max-width: 375px;
 }
 
+footer a {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-bottom: 1em;
+}
+
+footer a img {
+  margin-right: .5em;
+}
+
 #board {
   position: relative;
   display: -ms-grid;
@@ -81,21 +98,12 @@ main.container {
   font-size: 5em;
 }
 
-.score {
+#score {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-}
-
-.score span {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
 }
 /*# sourceMappingURL=main.css.map */

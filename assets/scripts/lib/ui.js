@@ -1,4 +1,6 @@
 const UI = (() => {
+  const score = document.getElementById('score');
+
   const renderCell = (cell, mark) => {
     cell.classList = `cell marked ${mark}`;
   };
@@ -14,13 +16,19 @@ const UI = (() => {
     board.classList.remove('active');
   };
 
-  const getPlayersNames = () => ['player_1', 'player_2'];
+  const updateScore = (p1, p2) => {
+    score.innerHTML = `<span> ${p1.getName()} </span>
+
+    <span>${p1.getScore()}</span> <span>${p2.getScore()}</span>
+
+    <span>${p2.getName()} </span>`;
+  };
 
   return {
-    getPlayersNames,
     renderCell,
     resetBoard,
     deactivateBoard,
+    updateScore,
   };
 })();
 
