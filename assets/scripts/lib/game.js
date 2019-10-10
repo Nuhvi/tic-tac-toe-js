@@ -9,18 +9,21 @@ const Game = (() => {
   let winningStreak;
   let gameNotOver;
 
-  const initialize = (player1, player2) => {
+  const getCurrentPlayer = () => currentPlayer;
+  const getWinningStreak = () => winningStreak;
+  const getGameNotOver = () => gameNotOver;
+
+  const addPlayers = (player1, player2) => {
     p1 = player1;
     p2 = player2;
+  };
+
+  const reset = () => {
     currentPlayer = p1;
     movesCount = 0;
     winningStreak = null;
     gameNotOver = true;
   };
-
-  const getCurrentPlayer = () => currentPlayer;
-  const getWinningStreak = () => winningStreak;
-  const getGameNotOver = () => gameNotOver;
 
   const threeInRow = (cell) => {
     Board.getRowColDiagonals(cell).forEach((arr) => {
@@ -53,7 +56,8 @@ const Game = (() => {
 
 
   return {
-    initialize,
+    reset,
+    addPlayers,
     markCell,
     getGameNotOver,
     getCurrentPlayer,

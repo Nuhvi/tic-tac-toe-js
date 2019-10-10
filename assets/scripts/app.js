@@ -7,13 +7,14 @@ import Board from './lib/board.js';
 let p1;
 let p2;
 const form = document.getElementById('form');
+const playAgain = document.getElementById('playagain');
 const cells = UI.getCells();
 
 const startGame = () => {
   UI.resetBoard();
   UI.updateScore(p1, p2);
   Board.reset();
-  Game.initialize(p1, p2);
+  Game.reset();
 };
 
 cells.forEach((cell) => {
@@ -31,8 +32,6 @@ cells.forEach((cell) => {
           lastPlayer.updateScore();
           UI.updateScore(p1, p2);
           UI.colorWinner(winningStreak);
-        } else {
-          console.log('Tie');
         }
       }
     }
@@ -47,5 +46,10 @@ form.addEventListener('submit', (e) => {
   p1 = Player(names[1] === '' ? 'Player 1' : names[1], 'x');
   p2 = Player(names[2] === '' ? 'Player 2' : names[2], 'o');
 
+  Game.addPlayers(p1, p2);
+  startGame();
+});
+
+playAgain.addEventListener('click', () => {
   startGame();
 });
