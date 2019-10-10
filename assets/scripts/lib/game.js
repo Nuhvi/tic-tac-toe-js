@@ -5,14 +5,17 @@ const Game = (() => {
   let p1;
   let p2;
   let currentPlayer;
-  let movesCount = 0;
+  let movesCount;
   let winningStreak;
-  let gameNotOver = true;
+  let gameNotOver;
 
-  const initializePlayers = (player1, player2) => {
+  const initialize = (player1, player2) => {
     p1 = player1;
     p2 = player2;
     currentPlayer = p1;
+    movesCount = 0;
+    winningStreak = null;
+    gameNotOver = true;
   };
 
   const getCurrentPlayer = () => currentPlayer;
@@ -50,7 +53,7 @@ const Game = (() => {
 
 
   return {
-    initializePlayers,
+    initialize,
     markCell,
     getGameNotOver,
     getCurrentPlayer,

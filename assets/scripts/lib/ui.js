@@ -1,6 +1,17 @@
 const UI = (() => {
   const renderCell = (cell, mark) => {
-    document.body.querySelector(`.cell[data-id="${cell}"]`).classList.add(`${mark}`);
+    cell.classList = `cell marked ${mark}`;
+  };
+
+  const resetBoard = (board, cells) => {
+    board.classList.add('active');
+    cells.forEach((cell) => {
+      cell.classList = 'cell unmarked';
+    });
+  };
+
+  const deactivateBoard = (board) => {
+    board.classList.remove('active');
   };
 
   const getPlayersNames = () => ['player_1', 'player_2'];
@@ -8,6 +19,8 @@ const UI = (() => {
   return {
     getPlayersNames,
     renderCell,
+    resetBoard,
+    deactivateBoard,
   };
 })();
 

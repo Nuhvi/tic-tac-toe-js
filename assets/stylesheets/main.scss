@@ -4,6 +4,12 @@ body {
     flex-direction: column;
 }
 
+h1 {
+    font-family: 'Work Sans', sans-serif;
+    font-size: 3rem;
+    font-weight: bold;
+}
+
 main {
     flex: 1 0 auto;
 
@@ -16,26 +22,74 @@ main {
     position: relative;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    grid-gap: 20px;
-    border: 10px solid grey;
-    border-radius: 20px;
-    padding: 20px;
+    grid-gap: 15px;
+    margin-bottom: 3rem;
 
     .cell {
         padding-top: 100%;
-        background-color: grey;
-        border-radius: 5px;
-        &.x{
-            background-color: red;
+        border-radius: 10px;
+        position: relative;
+
+        &::before {
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            top: 0;
+            left: 0;
+            display: grid;
+            justify-content: center;
+            align-content: center;
+
+            content: "+";
+            font-size: 1.5em;
+            color: gray;
         }
-        &.o{
-            background-color: green;
+
+        &.marked {
+            &::before {
+                font-family: 'Fredoka One', cursive;
+                font-size: 10em;
+            }
+
+            &.x {
+                &::before {
+                    content: "X";
+                }
+            }
+
+            &.o {
+                &::before {
+                    content: "O";
+                }
+            }
         }
     }
 
+    &.active {
+        .cell {
+            &::before {
+                color: black;
+            }
+
+            &.unmarked {
+                &:hover {
+                    &::before {
+                        font-family: 'Fredoka One', cursive;
+                        font-size: 5em;
+                    }
+                }
+            }
+        }
+
+    }
 }
 
 .score {
     display: flex;
     justify-content: space-between;
+
+    span {
+        display: flex;
+        align-items: center;
+    }
 }

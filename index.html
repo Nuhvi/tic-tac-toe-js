@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -5,46 +6,50 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Tic Tac Toe</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Fredoka+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Work+Sans:800&display=swap" rel="stylesheet">
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 
     <link rel="stylesheet" href="assets/stylesheets/main.css">
 </head>
 
-<body class="grey darken-3 white-text">
+<body class="">
     <main class="container center-align">
-        <h1>Tic Tac Toe</h1>
+        <h1 class="grey-text text-lighten-2">TIC TAC TOE</h1>
         <div id="board">
-            <div data-id="0" class="cell"></div>
-            <div data-id="1" class="cell"></div>
-            <div data-id="2" class="cell"></div>
-            <div data-id="3" class="cell"></div>
-            <div data-id="4" class="cell"></div>
-            <div data-id="5" class="cell"></div>
-            <div data-id="6" class="cell"></div>
-            <div data-id="7" class="cell"></div>
-            <div data-id="8" class="cell"></div>
+            <div data-id="0" class="cell unmarked"> </div>
+            <div data-id="1" class="cell unmarked"> </div>
+            <div data-id="2" class="cell unmarked"> </div>
+            <div data-id="3" class="cell unmarked"> </div>
+            <div data-id="4" class="cell unmarked"> </div>
+            <div data-id="5" class="cell unmarked"> </div>
+            <div data-id="6" class="cell unmarked"> </div>
+            <div data-id="7" class="cell unmarked"> </div>
+            <div data-id="8" class="cell unmarked"> </div>
         </div>
-        <div class="container">
-            <h5 class="score">
-                <span> Player1 </span><span>0</span>
-            </h5>
-            <h5 class="score">
-                <span> Player2 </span><span>0</span>
-            </h5>
+        <div class="score">
+            <span>
+                <span id="p1-name"> Player1 </span>
+            </span>
 
-            <div class="player-info">
-                <form id="form" action="#" method="post">
-                    <div class="input-field">
-                        <input type="text" name="player1" placeholder="Enter Player 1's Name" maxlength="10">
-                    </div>
-                    <div class="input-field">
-                        <input type="text" name="player2" placeholder="Enter Player 2's Name" maxlength="10">
-                    </div>
-                    <input type="submit" class="play">Play</input>
-                </form>
-            </div>
-            <button class="reset">Reset</button>
+            <span id="p1-score">0</span> <span id="p2-score">0</span>
+
+            <span>
+                <span id="p2-name">Player2 </span>
+            </span>
+        </div>
+        <div class="player-info">
+            <form id="form" action="#" method="post">
+                <button class="btn blue-grey waves-effect waves-light" type="submit" name="action">
+                    Start Game
+                </button>
+                <input class="white-text center-align" type="text" name="player1" placeholder="Player 1" maxlength="10">
+                <input class="materialize-input white-text center-align" type="text" name="player1"
+                    placeholder="Player 2" maxlength="10">
+            </form>
+
         </div>
 
     </main>

@@ -9,6 +9,12 @@ body {
           flex-direction: column;
 }
 
+h1 {
+  font-family: 'Work Sans', sans-serif;
+  font-size: 3rem;
+  font-weight: bold;
+}
+
 main {
   -webkit-box-flex: 1;
       -ms-flex: 1 0 auto;
@@ -25,24 +31,54 @@ main.container {
   display: grid;
   -ms-grid-columns: 1fr 1fr 1fr;
       grid-template-columns: 1fr 1fr 1fr;
-  grid-gap: 20px;
-  border: 10px solid grey;
-  border-radius: 20px;
-  padding: 20px;
+  grid-gap: 15px;
+  margin-bottom: 3rem;
 }
 
 #board .cell {
   padding-top: 100%;
-  background-color: grey;
-  border-radius: 5px;
+  border-radius: 10px;
+  position: relative;
 }
 
-#board .cell.x {
-  background-color: red;
+#board .cell::before {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  display: -ms-grid;
+  display: grid;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  content: "+";
+  font-size: 1.5em;
+  color: gray;
 }
 
-#board .cell.o {
-  background-color: green;
+#board .cell.marked::before {
+  font-family: 'Fredoka One', cursive;
+  font-size: 10em;
+}
+
+#board .cell.marked.x::before {
+  content: "X";
+}
+
+#board .cell.marked.o::before {
+  content: "O";
+}
+
+#board.active .cell::before {
+  color: black;
+}
+
+#board.active .cell.unmarked:hover::before {
+  font-family: 'Fredoka One', cursive;
+  font-size: 5em;
 }
 
 .score {
@@ -52,5 +88,14 @@ main.container {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+}
+
+.score span {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 /*# sourceMappingURL=main.css.map */
