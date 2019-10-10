@@ -15,54 +15,77 @@
     <link rel="stylesheet" href="assets/stylesheets/main.css">
 </head>
 
-<body class="">
-    <main class="container center-align">
-        <h1 class="grey-text text-lighten-2">TIC TAC TOE</h1>
-        <div id="board">
-            <div data-id="0" class="cell unmarked"> </div>
-            <div data-id="1" class="cell unmarked"> </div>
-            <div data-id="2" class="cell unmarked"> </div>
-            <div data-id="3" class="cell unmarked"> </div>
-            <div data-id="4" class="cell unmarked"> </div>
-            <div data-id="5" class="cell unmarked"> </div>
-            <div data-id="6" class="cell unmarked"> </div>
-            <div data-id="7" class="cell unmarked"> </div>
-            <div data-id="8" class="cell unmarked"> </div>
+<body>
+    <div class="card center-align">
+        <header class="container activator">
+            <h1 class=" activator ">
+                TIC TAC TOE
+            </h1>
+            <div id="score" class="card-content">
+                <span>Player 1</span>
+                <span>0</span>
+                <span>0</span>
+                <span>Player 2</span>
+            </div>
+        </header>
+
+        <main class="card-content">
+            <div id="board" class="active">
+                <div data-id="0" class="cell unmarked"> </div>
+                <div data-id="1" class="cell unmarked"> </div>
+                <div data-id="2" class="cell unmarked"> </div>
+                <div data-id="3" class="cell unmarked"> </div>
+                <div data-id="4" class="cell unmarked"> </div>
+                <div data-id="5" class="cell unmarked"> </div>
+                <div data-id="6" class="cell unmarked"> </div>
+                <div data-id="7" class="cell unmarked"> </div>
+                <div data-id="8" class="cell unmarked"> </div>
+            </div>
+        </main>
+        <span class=" card-title activator grey-text text-darken-4">
+            <i class="material-icons">menu</i>
+        </span>
+        <div class="card-reveal">
+            <span class="card-title grey-text text-darken-4 left-align">
+                Settings
+                <i class="material-icons right">close</i>
+            </span>
+            <div class="card-content ">
+                <div class="player-info ">
+                    <form id="form" action="#" method="post">
+                        <div class="input-field">
+                            <input class="materialize-input center-align" type="text" name="player1"
+                                placeholder="Player 1" maxlength="10">
+                        </div>
+                        <div class="input-field">
+                            <input class="materialize-input center-align" type="text" name="player1"
+                                placeholder="Player 2" maxlength="10">
+                        </div>
+                        <div class="input-field">
+                            <button class="card-title  btn blue-grey waves-effect waves-light" type="submit" name="action">
+                                Set Players Names
+                            </button>
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </div>
+            <footer>
+                <div class="container">
+                    <a href="https://github.com/Nazeh/tic-tac-toe-js" class="card-title grey-text text-darken-4">
+                        <img src="assets/images/github.png" alt="">
+                        Source
+                    </a>
+                    <span class="card-title grey-text text-darken-4 close-reveal">
+
+                        Back to Game
+                    </span>
+                </div>
+            </footer>
         </div>
-        <div id="score">
-            <span>Player 1</span>
-            <span>0</span>
-            <span>0</span>
-            <span>Player 2</span>
-        </div>
-
-        <br><br>
-
-        <button id="playagain" class="btn blue-grey waves-effect waves-light" name="action">
-            play Again
-        </button>
-        <br><br>
-
-        <div class="player-info ">
-            <form id="form" action="#" method="post">
-                <button class="btn blue-grey waves-effect waves-light" type="submit" name="action">
-                    Start New Game
-                </button>
-                <input class="materialize-input center-align" type="text" name="player1" placeholder="Player 1"
-                    maxlength="10">
-                <input class="materialize-input center-align" type="text" name="player1" placeholder="Player 2"
-                    maxlength="10">
-            </form>
-
-        </div>
-
-    </main>
-    <footer>
-        <a href="https://github.com/Nazeh/tic-tac-toe-js" class="black-text">
-            <img src="assets/images/github.png" alt="">
-            Source on Github
-        </a>
-    </footer>
+    </div>
     <script type="module" src="assets/scripts/app.js"></script> <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </body>

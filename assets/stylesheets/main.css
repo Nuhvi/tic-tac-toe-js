@@ -1,12 +1,22 @@
-body {
+.card {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  margin: auto;
   min-height: 100vh;
+  max-width: 400px;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+.card-content {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 0 auto;
+          flex: 1 0 auto;
 }
 
 h1 {
@@ -15,41 +25,12 @@ h1 {
   font-weight: bold;
 }
 
-main {
-  -webkit-box-flex: 1;
-      -ms-flex: 1 0 auto;
-          flex: 1 0 auto;
-}
-
-main.container {
-  max-width: 375px;
-}
-
-footer a {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  margin-bottom: 1em;
-}
-
-footer a img {
-  margin-right: .5em;
-}
-
 #board {
   position: relative;
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: 1fr 1fr 1fr;
       grid-template-columns: 1fr 1fr 1fr;
-  grid-gap: 15px;
-  margin-bottom: 3rem;
 }
 
 #board .cell {
@@ -72,13 +53,14 @@ footer a img {
   -ms-flex-line-pack: center;
       align-content: center;
   content: "+";
-  font-size: 1.5em;
-  color: gray;
+  font-size: 1.5rem;
+  color: #efefef;
 }
 
 #board .cell.marked::before {
   font-family: 'Fredoka One', cursive;
-  font-size: 10em;
+  font-size: 9rem;
+  line-height: 1.5rem;
 }
 
 #board .cell.marked.x::before {
@@ -99,7 +81,7 @@ footer a img {
 
 #board.active .cell.unmarked:hover::before {
   font-family: 'Fredoka One', cursive;
-  font-size: 5em;
+  font-size: 5rem;
 }
 
 #score {
@@ -113,5 +95,27 @@ footer a img {
 
 #score span {
   font-weight: bold;
+}
+
+.card-reveal button.card-title {
+  font-size: 14px;
+  margin: auto;
+  font-weight: 400;
+}
+
+.card-reveal footer {
+  bottom: 1rem;
+  position: absolute;
+  left: 0;
+  width: 100%;
+}
+
+.card-reveal footer .container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 /*# sourceMappingURL=main.css.map */
