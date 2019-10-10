@@ -106,4 +106,7 @@ footer {
 #score {
     display: flex;
     justify-content: space-between;
+    span {
+        font-weight: bold;
+    }
 }

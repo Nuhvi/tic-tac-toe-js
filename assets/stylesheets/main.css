@@ -110,4 +110,8 @@ footer a img {
       -ms-flex-pack: justify;
           justify-content: space-between;
 }
+
+#score span {
+  font-weight: bold;
+}
 /*# sourceMappingURL=main.css.map */
