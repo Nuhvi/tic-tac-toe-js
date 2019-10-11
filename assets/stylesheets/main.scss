@@ -16,27 +16,22 @@ header {
     h1 {
         font-family: 'Work Sans', sans-serif;
         font-size: 2.5rem;
-        font-weight: bold;
         letter-spacing: 6px;
     }
 
     #players-info {
         display: grid;
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 1fr 4rem 1fr;
+        padding: 1rem;
 
-        >:nth-child(1) {
-            padding-left: 1rem;
-        }
-
-        >:nth-child(2) {
+        >:nth-child(3) {
             direction: rtl;
-            padding-right: 1rem;
         }
 
         div {
             display: grid;
             grid-template-columns: 2rem auto auto;
-            padding-bottom: 1rem;
+            height: 2rem;
             font-weight: bold;
             color: #aeaeae;
 
@@ -48,11 +43,15 @@ header {
             }
         }
 
+        i {}
+
+        @mixin active-player {
+            border-bottom: 3px solid red;
+            color: black;
+        }
+
         &.play {
-            @mixin active-player {
-                border-bottom: 3px solid red;
-                color: black;
-            }
+
 
             &.p1 {
                 >:nth-child(1) {
@@ -61,7 +60,7 @@ header {
             }
 
             &.p2 {
-                >:nth-child(2) {
+                >:nth-child(3) {
                     @include active-player()
                 }
             }
@@ -75,7 +74,7 @@ header {
             }
 
             &.p2 {
-                >:nth-child(2) {
+                >:nth-child(3) {
                     @include win()
                 }
             }
@@ -154,14 +153,6 @@ header {
     }
 }
 
-.more {
-    margin: 24px;
-
-    i {
-        font-size: 2.5rem;
-    }
-}
-
 .card-reveal {
     button {
         &.card-title {
@@ -170,6 +161,7 @@ header {
             font-weight: 400;
         }
     }
+
 }
 
 .btn {

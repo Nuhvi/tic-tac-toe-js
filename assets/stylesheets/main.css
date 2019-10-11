@@ -16,24 +16,19 @@
 header h1 {
   font-family: 'Work Sans', sans-serif;
   font-size: 2.5rem;
-  font-weight: bold;
   letter-spacing: 6px;
 }
 
 header #players-info {
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 1fr 1fr;
-      grid-template-columns: 1fr 1fr;
+  -ms-grid-columns: 1fr 4rem 1fr;
+      grid-template-columns: 1fr 4rem 1fr;
+  padding: 1rem;
 }
 
-header #players-info > :nth-child(1) {
-  padding-left: 1rem;
-}
-
-header #players-info > :nth-child(2) {
+header #players-info > :nth-child(3) {
   direction: rtl;
-  padding-right: 1rem;
 }
 
 header #players-info div {
@@ -41,7 +36,7 @@ header #players-info div {
   display: grid;
   -ms-grid-columns: 2rem auto auto;
       grid-template-columns: 2rem auto auto;
-  padding-bottom: 1rem;
+  height: 2rem;
   font-weight: bold;
   color: #aeaeae;
 }
@@ -58,7 +53,7 @@ header #players-info.play.p1 > :nth-child(1) {
   color: black;
 }
 
-header #players-info.play.p2 > :nth-child(2) {
+header #players-info.play.p2 > :nth-child(3) {
   border-bottom: 3px solid red;
   color: black;
 }
@@ -67,7 +62,7 @@ header #players-info.win.p1 > :nth-child(1) {
   color: red;
 }
 
-header #players-info.win.p2 > :nth-child(2) {
+header #players-info.win.p2 > :nth-child(3) {
   color: red;
 }
 
@@ -128,14 +123,6 @@ header #players-info.win.p2 > :nth-child(2) {
 #board.active .cell.unmarked:hover::before {
   font-family: 'Fredoka One', cursive;
   font-size: 5rem;
-}
-
-.more {
-  margin: 24px;
-}
-
-.more i {
-  font-size: 2.5rem;
 }
 
 .card-reveal button.card-title {
