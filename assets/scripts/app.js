@@ -4,12 +4,13 @@ import UI from './lib/ui.js';
 import Game from './lib/game.js';
 import Board from './lib/board.js';
 
-let p1 = Player('Player 1', 'x');
-let p2 = Player('Player 1', 'o');
-const form = document.getElementById('form');
+const form = UI.getForm();
 const cells = UI.getCells();
 
+const p1 = Player('p1');
+const p2 = Player('p2');
 Game.addPlayers(p1, p2);
+UI.updateFormPlaceholders(p1, p2);
 
 const startGame = () => {
   UI.resetBoard();
@@ -43,13 +44,13 @@ cells.forEach((cell) => {
 
 form.addEventListener('submit', (e) => {
   e.preventDefault();
-  const names = [...form.elements].map((element) => element.value);
+  const name1 = form[1].value;
+  const name2 = form[2].value;
+  if (name1) p1.setName(name1);
+  if (name2) p2.setName(name2);
   form.reset();
-
-  p1 = Player(names[0] === '' ? 'Player 1' : names[0], 'x');
-  p2 = Player(names[1] === '' ? 'Player 2' : names[1], 'o');
+  UI.updateFormPlaceholders(p1, p2);
   UI.updateScore(p1, p2);
-  Game.addPlayers(p1, p2);
 });
 
 startGame();

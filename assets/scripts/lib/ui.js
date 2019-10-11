@@ -2,8 +2,15 @@ const UI = (() => {
   const board = document.getElementById('board');
   const cells = Array.from(board.children);
   const score = document.getElementById('score');
+  const form = document.getElementById('form');
 
   const getCells = () => cells;
+  const getForm = () => form;
+
+  const updateFormPlaceholders = (p1, p2) => {
+    form[1].placeholder = p1.getName();
+    form[2].placeholder = p2.getName();
+  };
 
   const renderCell = (cell, mark) => {
     cell.classList = `cell marked ${mark}`;
@@ -35,6 +42,8 @@ const UI = (() => {
 
   return {
     getCells,
+    getForm,
+    updateFormPlaceholders,
     renderCell,
     resetBoard,
     deactivateBoard,
