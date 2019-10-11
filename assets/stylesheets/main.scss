@@ -1,3 +1,7 @@
+@mixin win {
+    color: red;
+}
+
 .card {
     display: flex;
     margin: auto;
@@ -16,18 +20,65 @@ header {
         letter-spacing: 6px;
     }
 
-    .score {
-        #score {
-            display: flex;
-            justify-content: space-between;
-            padding: 0px 24px;
-            align-items: center;
-            font-weight: bold;
+    #players-info {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+
+        >:nth-child(1) {
+            padding-left: 1rem;
         }
 
-        #underline {
-            height: 3px;
-            width: 165px;
+        >:nth-child(2) {
+            direction: rtl;
+            padding-right: 1rem;
+        }
+
+        div {
+            display: grid;
+            grid-template-columns: 2rem auto auto;
+            padding-bottom: 1rem;
+            font-weight: bold;
+            color: #aeaeae;
+
+            :nth-child(1) {
+                font-family: 'Fredoka One', cursive;
+                font-weight: 100;
+                font-size: 2rem;
+                line-height: 1rem;
+            }
+        }
+
+        &.play {
+            @mixin active-player {
+                border-bottom: 3px solid red;
+                color: black;
+            }
+
+            &.p1 {
+                >:nth-child(1) {
+                    @include active-player()
+                }
+            }
+
+            &.p2 {
+                >:nth-child(2) {
+                    @include active-player()
+                }
+            }
+        }
+
+        &.win {
+            &.p1 {
+                >:nth-child(1) {
+                    @include win()
+                }
+            }
+
+            &.p2 {
+                >:nth-child(2) {
+                    @include win()
+                }
+            }
         }
     }
 }
@@ -78,7 +129,7 @@ header {
 
             &.win {
                 &::before {
-                    color: red;
+                    @include win()
                 }
             }
         }
@@ -104,7 +155,7 @@ header {
 }
 
 .more {
-    margin: 0 24px;
+    margin: 24px;
 
     i {
         font-size: 2.5rem;

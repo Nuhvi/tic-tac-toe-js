@@ -20,23 +20,55 @@ header h1 {
   letter-spacing: 6px;
 }
 
-header .score #score {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  padding: 0px 24px;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  font-weight: bold;
+header #players-info {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
 }
 
-header .score #underline {
-  height: 3px;
-  width: 165px;
+header #players-info > :nth-child(1) {
+  padding-left: 1rem;
+}
+
+header #players-info > :nth-child(2) {
+  direction: rtl;
+  padding-right: 1rem;
+}
+
+header #players-info div {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 2rem auto auto;
+      grid-template-columns: 2rem auto auto;
+  padding-bottom: 1rem;
+  font-weight: bold;
+  color: #aeaeae;
+}
+
+header #players-info div :nth-child(1) {
+  font-family: 'Fredoka One', cursive;
+  font-weight: 100;
+  font-size: 2rem;
+  line-height: 1rem;
+}
+
+header #players-info.play.p1 > :nth-child(1) {
+  border-bottom: 3px solid red;
+  color: black;
+}
+
+header #players-info.play.p2 > :nth-child(2) {
+  border-bottom: 3px solid red;
+  color: black;
+}
+
+header #players-info.win.p1 > :nth-child(1) {
+  color: red;
+}
+
+header #players-info.win.p2 > :nth-child(2) {
+  color: red;
 }
 
 #board {
@@ -99,7 +131,7 @@ header .score #underline {
 }
 
 .more {
-  margin: 0 24px;
+  margin: 24px;
 }
 
 .more i {

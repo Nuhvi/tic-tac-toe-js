@@ -12,45 +12,52 @@ const p2 = Player('p2');
 Game.addPlayers(p1, p2);
 UI.updateFormPlaceholders(p1, p2);
 
-const startGame = () => {
-  UI.resetBoard();
-  UI.updateScore(p1, p2);
+const newGame = () => {
   Board.reset();
   Game.reset();
+  UI.resetBoard();
+  UI.updatePlayersInfo(p1, p2);
+  UI.highlightPlayer(Game.getCurrentPlayer());
+};
+
+const play = (cell) => {
+  const cellId = cell.getAttribute('data-id');
+  const lastPlayer = Game.getCurrentPlayer();
+
+  if (Game.markCell(cellId)) UI.renderCell(cell, lastPlayer.getMark());
+
+  if (Game.getGameNotOver()) {
+    UI.highlightPlayer(Game.getCurrentPlayer());
+  } else {
+    UI.tie();
+    const winningStreak = Game.getWinningStreak();
+    if (winningStreak) {
+      lastPlayer.updateScore();
+      UI.updatePlayersInfo(p1, p2);
+      UI.colorWinner(winningStreak, lastPlayer);
+    }
+  }
 };
 
 cells.forEach((cell) => {
   cell.addEventListener('click', () => {
     if (Game.getGameNotOver()) {
-      const cellId = cell.getAttribute('data-id');
-      const lastPlayer = Game.getCurrentPlayer();
-
-      if (Game.markCell(cellId)) UI.renderCell(cell, lastPlayer.getMark());
-
-      if (!Game.getGameNotOver()) {
-        UI.deactivateBoard();
-        const winningStreak = Game.getWinningStreak();
-        if (winningStreak) {
-          lastPlayer.updateScore();
-          UI.updateScore(p1, p2);
-          UI.colorWinner(winningStreak);
-        }
-      }
+      play(cell);
     } else {
-      startGame();
+      newGame();
     }
   });
 });
 
 form.addEventListener('submit', (e) => {
   e.preventDefault();
-  const name1 = form[1].value;
-  const name2 = form[2].value;
+  const name1 = form[0].value;
+  const name2 = form[1].value;
   if (name1) p1.setName(name1);
   if (name2) p2.setName(name2);
   form.reset();
   UI.updateFormPlaceholders(p1, p2);
-  UI.updateScore(p1, p2);
+  UI.updatePlayersInfo(p1, p2);
 });
 
-startGame();
+newGame();

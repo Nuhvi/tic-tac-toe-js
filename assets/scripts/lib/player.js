@@ -21,6 +21,7 @@ const Player = (type) => {
   const getName = () => name;
   const getMark = () => mark;
   const getScore = () => score;
+  const getType = () => type;
   const updateScore = () => {
     score += 1;
   };
@@ -33,6 +34,7 @@ const Player = (type) => {
     getName,
     getMark,
     getScore,
+    getType,
     updateScore,
     changeMark,
   };

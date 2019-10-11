@@ -1,15 +1,15 @@
 const UI = (() => {
   const board = document.getElementById('board');
   const cells = Array.from(board.children);
-  const score = document.getElementById('score');
+  const playersInfo = document.getElementById('players-info');
   const form = document.getElementById('form');
 
   const getCells = () => cells;
   const getForm = () => form;
 
   const updateFormPlaceholders = (p1, p2) => {
-    form[1].placeholder = p1.getName();
-    form[2].placeholder = p2.getName();
+    form[0].placeholder = p1.getName();
+    form[1].placeholder = p2.getName();
   };
 
   const renderCell = (cell, mark) => {
@@ -23,21 +23,35 @@ const UI = (() => {
     });
   };
 
-  const deactivateBoard = () => {
+  const tie = () => {
     board.classList.remove('active');
+    playersInfo.classList = 'tie';
   };
 
-  const updateScore = (p1, p2) => {
-    score.innerHTML = `<span> ${p1.getName()} </span>
-                       <span>${p1.getScore()}</span>
-                       <span>${p2.getScore()}</span>
-                       <span>${p2.getName()} </span>`;
+  const updatePlayersInfo = (p1, p2) => {
+    playersInfo.innerHTML = `
+    <div id="p1" class="activator">
+      <span class="p-mark">${p1.getMark()}</span>
+      <span>${p1.getName()}</span>
+      <span>${p1.getScore()}</span>
+    </div>
+    <div id="p2" class="activator">
+      <span class="p-mark">${p2.getMark()}</span>
+      <span>${p2.getName()}</span>
+      <span>${p2.getScore()}</span>
+    </div>`;
   };
 
-  const colorWinner = (winningStreak) => {
+  const highlightPlayer = (currentPlayer) => {
+    playersInfo.classList = `play ${currentPlayer.getType()}`;
+  };
+
+  const colorWinner = (winningStreak, winnerPlayer) => {
     winningStreak.forEach((i) => {
       cells[i].classList.add('win');
     });
+
+    playersInfo.classList = `win ${winnerPlayer.getType()}`;
   };
 
   return {
@@ -46,8 +60,9 @@ const UI = (() => {
     updateFormPlaceholders,
     renderCell,
     resetBoard,
-    deactivateBoard,
-    updateScore,
+    tie,
+    updatePlayersInfo,
+    highlightPlayer,
     colorWinner,
   };
 })();
