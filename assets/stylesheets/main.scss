@@ -1,5 +1,24 @@
 @mixin win {
     color: red;
+
+    animation: win .3s ease-in-out 2;
+
+    @keyframes win {
+        0% {
+            transform: scale(1);
+            animation-timing-function: ease-out
+        }
+
+        50% {
+            transform: scale(.90);
+            animation-timing-function: ease-in
+        }
+
+        100% {
+            transform: scale(1);
+            animation-timing-function: ease-out
+        }
+    }
 }
 
 .card {
@@ -15,6 +34,7 @@ header {
     h1 {
         font-family: 'Work Sans', sans-serif;
         font-size: 2.5rem;
+        font-weight: bold;
         letter-spacing: 6px;
     }
 
@@ -151,24 +171,13 @@ header {
 }
 
 .card-reveal {
-    button {
-        &.card-title {
-            margin: auto;
-            font-size: 14px;
-            font-weight: 400;
-        }
-    }
-
-}
-
-.btn {
-    color: black;
-    background-color: white;
-    border: 2px solid black;
-    box-shadow: none;
-
-    &:hover {
+    .btn {
+        margin: auto;
+        font-size: 14px;
+        font-weight: 400;
+        color: black;
         background-color: white;
+        border: 2px solid black;
         box-shadow: none;
     }
 }

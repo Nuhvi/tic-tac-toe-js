@@ -56,8 +56,8 @@ const Game = (() => {
 
 
   return {
-    reset,
     addPlayers,
+    reset,
     markCell,
     getGameNotOver,
     getCurrentPlayer,

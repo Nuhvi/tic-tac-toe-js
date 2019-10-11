@@ -2,10 +2,8 @@ const UI = (() => {
   const board = document.getElementById('board');
   const cells = Array.from(board.children);
   const playersInfo = document.getElementById('players-info');
-  const form = document.getElementById('form');
 
   const getCells = () => cells;
-  const getForm = () => form;
 
   const renderCell = (cell, mark) => {
     cell.classList = `cell marked ${mark}`;
@@ -52,7 +50,6 @@ const UI = (() => {
 
   return {
     getCells,
-    getForm,
     renderCell,
     resetBoard,
     deactivate,

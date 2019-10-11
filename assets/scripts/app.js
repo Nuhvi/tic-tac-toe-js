@@ -6,9 +6,8 @@ import Board from './lib/board.js';
 
 let p1;
 let p2;
-const form = UI.getForm();
 const cells = UI.getCells();
-
+const form2 = document.getElementById('form-two-p');
 
 const newPlayers = () => {
   p1 = Player('p1');
@@ -60,11 +59,11 @@ cells.forEach((cell) => {
   });
 });
 
-form.addEventListener('submit', (e) => {
+form2.addEventListener('submit', (e) => {
   e.preventDefault();
-  const name1 = form[0].value;
-  const name2 = form[1].value;
-  form.reset();
+  const name1 = form2[0].value;
+  const name2 = form2[1].value;
+  form2.reset();
   start();
   if (name1) p1.setName(name1);
   if (name2) p2.setName(name2);

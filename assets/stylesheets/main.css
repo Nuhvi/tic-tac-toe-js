@@ -16,6 +16,7 @@
 header h1 {
   font-family: 'Work Sans', sans-serif;
   font-size: 2.5rem;
+  font-weight: bold;
   letter-spacing: 6px;
 }
 
@@ -60,10 +61,77 @@ header #players-info.play.p2 > :nth-child(3) {
 
 header #players-info.win.p1 > :nth-child(1) {
   color: red;
+  -webkit-animation: win .3s ease-in-out 2;
+          animation: win .3s ease-in-out 2;
+}
+
+@-webkit-keyframes win {
+  0% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    -webkit-animation-timing-function: ease-out;
+            animation-timing-function: ease-out;
+  }
+  50% {
+    -webkit-transform: scale(0.9);
+            transform: scale(0.9);
+    -webkit-animation-timing-function: ease-in;
+            animation-timing-function: ease-in;
+  }
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    -webkit-animation-timing-function: ease-out;
+            animation-timing-function: ease-out;
+  }
+}
+
+@keyframes win {
+  0% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    -webkit-animation-timing-function: ease-out;
+            animation-timing-function: ease-out;
+  }
+  50% {
+    -webkit-transform: scale(0.9);
+            transform: scale(0.9);
+    -webkit-animation-timing-function: ease-in;
+            animation-timing-function: ease-in;
+  }
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    -webkit-animation-timing-function: ease-out;
+            animation-timing-function: ease-out;
+  }
 }
 
 header #players-info.win.p2 > :nth-child(3) {
   color: red;
+  -webkit-animation: win .3s ease-in-out 2;
+          animation: win .3s ease-in-out 2;
+}
+
+@keyframes win {
+  0% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    -webkit-animation-timing-function: ease-out;
+            animation-timing-function: ease-out;
+  }
+  50% {
+    -webkit-transform: scale(0.9);
+            transform: scale(0.9);
+    -webkit-animation-timing-function: ease-in;
+            animation-timing-function: ease-in;
+  }
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    -webkit-animation-timing-function: ease-out;
+            animation-timing-function: ease-out;
+  }
 }
 
 #board {
@@ -114,6 +182,29 @@ header #players-info.win.p2 > :nth-child(3) {
 
 #board .cell.marked.win::before {
   color: red;
+  -webkit-animation: win .3s ease-in-out 2;
+          animation: win .3s ease-in-out 2;
+}
+
+@keyframes win {
+  0% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    -webkit-animation-timing-function: ease-out;
+            animation-timing-function: ease-out;
+  }
+  50% {
+    -webkit-transform: scale(0.9);
+            transform: scale(0.9);
+    -webkit-animation-timing-function: ease-in;
+            animation-timing-function: ease-in;
+  }
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    -webkit-animation-timing-function: ease-out;
+            animation-timing-function: ease-out;
+  }
 }
 
 #board.active .cell::before {
@@ -125,22 +216,13 @@ header #players-info.win.p2 > :nth-child(3) {
   font-size: 5rem;
 }
 
-.card-reveal button.card-title {
+.card-reveal .btn {
   margin: auto;
   font-size: 14px;
   font-weight: 400;
-}
-
-.btn {
   color: black;
   background-color: white;
   border: 2px solid black;
-  -webkit-box-shadow: none;
-          box-shadow: none;
-}
-
-.btn:hover {
-  background-color: white;
   -webkit-box-shadow: none;
           box-shadow: none;
 }

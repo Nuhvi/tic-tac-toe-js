@@ -15,13 +15,14 @@ const Player = (type) => {
   }
 
 
-  const setName = (_name) => {
-    name = _name;
-  };
   const getName = () => name;
   const getMark = () => mark;
   const getScore = () => score;
   const getType = () => type;
+
+  const setName = (_name) => {
+    name = _name;
+  };
   const updateScore = () => {
     score += 1;
   };
@@ -30,11 +31,11 @@ const Player = (type) => {
   };
 
   return {
-    setName,
     getName,
     getMark,
     getScore,
     getType,
+    setName,
     updateScore,
     switchMark,
   };
