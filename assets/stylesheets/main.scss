@@ -10,21 +10,17 @@
 
 header {
     h1 {
-        margin: 32px 0 0 0;
         font-family: 'Work Sans', sans-serif;
-        font-size: 3rem;
-        letter-spacing: 8px;
+        font-size: 2.5rem;
+        font-weight: bold;
+        letter-spacing: 6px;
     }
 
     .score {
-        max-width: 330px;
-        margin: auto;
-
         #score {
             display: flex;
             justify-content: space-between;
             padding: 0px 24px;
-            height: 48px;
             align-items: center;
             font-weight: bold;
         }
@@ -34,11 +30,6 @@ header {
             width: 165px;
         }
     }
-}
-
-
-.card-content {
-    flex: 1 0 auto;
 }
 
 #board {
@@ -112,12 +103,32 @@ header {
     }
 }
 
+.more {
+    margin: 0 24px;
+
+    i {
+        font-size: 2.5rem;
+    }
+}
+
 .card-reveal {
     button {
         &.card-title {
-            font-size: 14px;
             margin: auto;
-            font-weight: 400
+            font-size: 14px;
+            font-weight: 400;
         }
+    }
+}
+
+.btn {
+    color: black;
+    background-color: white;
+    border: 2px solid black;
+    box-shadow: none;
+
+    &:hover {
+        background-color: white;
+        box-shadow: none;
     }
 }
