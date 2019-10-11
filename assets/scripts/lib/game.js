@@ -19,7 +19,7 @@ const Game = (() => {
   };
 
   const reset = () => {
-    currentPlayer = p1;
+    currentPlayer = p1.getMark() === 'x' ? p1 : p2;
     movesCount = 0;
     winningStreak = null;
     gameNotOver = true;

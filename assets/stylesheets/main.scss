@@ -8,7 +8,6 @@
     min-height: 100vh;
     max-width: 400px;
     flex-direction: column;
-
     box-shadow: none;
 }
 
@@ -42,8 +41,6 @@ header {
                 line-height: 1rem;
             }
         }
-
-        i {}
 
         @mixin active-player {
             border-bottom: 3px solid red;

@@ -25,7 +25,7 @@ const Player = (type) => {
   const updateScore = () => {
     score += 1;
   };
-  const changeMark = () => {
+  const switchMark = () => {
     mark = mark === 'x' ? 'o' : 'x';
   };
 
@@ -36,7 +36,7 @@ const Player = (type) => {
     getScore,
     getType,
     updateScore,
-    changeMark,
+    switchMark,
   };
 };
 

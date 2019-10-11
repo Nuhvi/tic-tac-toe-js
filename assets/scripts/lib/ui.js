@@ -7,11 +7,6 @@ const UI = (() => {
   const getCells = () => cells;
   const getForm = () => form;
 
-  const updateFormPlaceholders = (p1, p2) => {
-    form[0].placeholder = p1.getName();
-    form[1].placeholder = p2.getName();
-  };
-
   const renderCell = (cell, mark) => {
     cell.classList = `cell marked ${mark}`;
   };
@@ -23,7 +18,7 @@ const UI = (() => {
     });
   };
 
-  const tie = () => {
+  const deactivate = () => {
     board.classList.remove('active');
     playersInfo.classList = 'tie';
   };
@@ -58,10 +53,9 @@ const UI = (() => {
   return {
     getCells,
     getForm,
-    updateFormPlaceholders,
     renderCell,
     resetBoard,
-    tie,
+    deactivate,
     updatePlayersInfo,
     highlightPlayer,
     colorWinner,

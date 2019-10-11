@@ -4,13 +4,17 @@ import UI from './lib/ui.js';
 import Game from './lib/game.js';
 import Board from './lib/board.js';
 
+let p1;
+let p2;
 const form = UI.getForm();
 const cells = UI.getCells();
 
-const p1 = Player('p1');
-const p2 = Player('p2');
-Game.addPlayers(p1, p2);
-UI.updateFormPlaceholders(p1, p2);
+
+const newPlayers = () => {
+  p1 = Player('p1');
+  p2 = Player('p2');
+  Game.addPlayers(p1, p2);
+};
 
 const newGame = () => {
   Board.reset();
@@ -18,6 +22,11 @@ const newGame = () => {
   UI.resetBoard();
   UI.updatePlayersInfo(p1, p2);
   UI.highlightPlayer(Game.getCurrentPlayer());
+};
+
+const start = () => {
+  newPlayers();
+  newGame();
 };
 
 const play = (cell) => {
@@ -29,13 +38,15 @@ const play = (cell) => {
   if (Game.getGameNotOver()) {
     UI.highlightPlayer(Game.getCurrentPlayer());
   } else {
-    UI.tie();
+    UI.deactivate();
     const winningStreak = Game.getWinningStreak();
     if (winningStreak) {
       lastPlayer.updateScore();
       UI.updatePlayersInfo(p1, p2);
       UI.colorWinner(winningStreak, lastPlayer);
     }
+    p1.switchMark();
+    p2.switchMark();
   }
 };
 
@@ -53,11 +64,11 @@ form.addEventListener('submit', (e) => {
   e.preventDefault();
   const name1 = form[0].value;
   const name2 = form[1].value;
+  form.reset();
+  start();
   if (name1) p1.setName(name1);
   if (name2) p2.setName(name2);
-  form.reset();
-  UI.updateFormPlaceholders(p1, p2);
   UI.updatePlayersInfo(p1, p2);
 });
 
-newGame();
+start();
