@@ -1,0 +1,244 @@
+.card {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: auto;
+  min-height: 100vh;
+  max-width: 400px;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+.card-reveal .btn {
+  margin: auto;
+  font-size: 14px;
+  font-weight: 400;
+  color: black;
+  background-color: white;
+  border: 2px solid black;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+header h1 {
+  font-family: 'Work Sans', sans-serif;
+  font-size: 2.5rem;
+  font-weight: bold;
+  letter-spacing: 6px;
+}
+
+header .activator {
+  position: absolute;
+  width: 100%;
+  height: 156px;
+  cursor: pointer;
+}
+
+header #players-info {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 4rem 1fr;
+      grid-template-columns: 1fr 4rem 1fr;
+  padding: 1rem;
+}
+
+header #players-info > :nth-child(3) {
+  direction: rtl;
+}
+
+header #players-info div {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1rem auto auto;
+      grid-template-columns: 1rem auto auto;
+  height: 2rem;
+  font-weight: bold;
+  color: #aeaeae;
+}
+
+header #players-info div.x .mark::before {
+  content: 'x';
+}
+
+header #players-info div.o .mark::before {
+  content: 'o';
+}
+
+header #players-info div .mark {
+  font-family: 'Fredoka One', cursive;
+  font-weight: 100;
+  font-size: 2rem;
+  line-height: 1rem;
+}
+
+header #players-info.play.x .x {
+  border-bottom: 3px solid red;
+  color: black;
+}
+
+header #players-info.play.o .o {
+  border-bottom: 3px solid red;
+  color: black;
+}
+
+header #players-info.win.x .x {
+  color: red;
+  -webkit-animation: win .3s ease-in-out 2;
+          animation: win .3s ease-in-out 2;
+}
+
+@-webkit-keyframes win {
+  0% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    -webkit-animation-timing-function: ease-out;
+            animation-timing-function: ease-out;
+  }
+  50% {
+    -webkit-transform: scale(0.9);
+            transform: scale(0.9);
+    -webkit-animation-timing-function: ease-in;
+            animation-timing-function: ease-in;
+  }
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    -webkit-animation-timing-function: ease-out;
+            animation-timing-function: ease-out;
+  }
+}
+
+@keyframes win {
+  0% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    -webkit-animation-timing-function: ease-out;
+            animation-timing-function: ease-out;
+  }
+  50% {
+    -webkit-transform: scale(0.9);
+            transform: scale(0.9);
+    -webkit-animation-timing-function: ease-in;
+            animation-timing-function: ease-in;
+  }
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    -webkit-animation-timing-function: ease-out;
+            animation-timing-function: ease-out;
+  }
+}
+
+header #players-info.win.o .o {
+  color: red;
+  -webkit-animation: win .3s ease-in-out 2;
+          animation: win .3s ease-in-out 2;
+}
+
+@keyframes win {
+  0% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    -webkit-animation-timing-function: ease-out;
+            animation-timing-function: ease-out;
+  }
+  50% {
+    -webkit-transform: scale(0.9);
+            transform: scale(0.9);
+    -webkit-animation-timing-function: ease-in;
+            animation-timing-function: ease-in;
+  }
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    -webkit-animation-timing-function: ease-out;
+            animation-timing-function: ease-out;
+  }
+}
+
+#board {
+  position: relative;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr;
+}
+
+#board .cell {
+  padding-top: 100%;
+  border-radius: 10px;
+  position: relative;
+}
+
+#board .cell::before {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  display: -ms-grid;
+  display: grid;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  content: "+";
+  font-size: 1.5rem;
+  color: #efefef;
+}
+
+#board .cell.marked::before {
+  font-family: 'Fredoka One', cursive;
+  font-size: 9rem;
+  line-height: 1.5rem;
+}
+
+#board .cell.marked.x::before {
+  content: "X";
+}
+
+#board .cell.marked.o::before {
+  content: "O";
+}
+
+#board .cell.marked.win::before {
+  color: red;
+  -webkit-animation: win .3s ease-in-out 2;
+          animation: win .3s ease-in-out 2;
+}
+
+@keyframes win {
+  0% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    -webkit-animation-timing-function: ease-out;
+            animation-timing-function: ease-out;
+  }
+  50% {
+    -webkit-transform: scale(0.9);
+            transform: scale(0.9);
+    -webkit-animation-timing-function: ease-in;
+            animation-timing-function: ease-in;
+  }
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    -webkit-animation-timing-function: ease-out;
+            animation-timing-function: ease-out;
+  }
+}
+
+#board.active .cell::before {
+  color: black;
+}
+
+#board.active .cell.unmarked:hover::before {
+  font-family: 'Fredoka One', cursive;
+  font-size: 5rem;
+}
+/*# sourceMappingURL=main.css.map */

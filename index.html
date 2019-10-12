@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Tic Tac Toe</title>
+    <link rel="icon" href="assets/images/icon.png">
+    <!-- fonts -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Fredoka+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Work+Sans:800&display=swap" rel="stylesheet">
+    <!-- stylesheets -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="assets/stylesheets/main.css">
+</head>
+
+<body>
+    <div class="card center-align">
+        <header>
+            <div class="activator"></div>
+            <h1> TIC TAC TOE </h1>
+            <div id="players-info" class="play x">
+                <div class="x">
+                    <span class="mark"></span>
+                    <span>Player 1</span>
+                    <span>0</span>
+                </div>
+                <i class="material-icons ">tonality</i>
+                <div class="o">
+                    <span class="mark"></span>
+                    <span>Player 2</span>
+                    <span>0</span>
+                </div>
+            </div>
+        </header>
+
+        <main class="card-content">
+            <div id="board" class="active">
+                <div data-id="0" class="cell unmarked"> </div>
+                <div data-id="1" class="cell unmarked"> </div>
+                <div data-id="2" class="cell unmarked"> </div>
+                <div data-id="3" class="cell unmarked"> </div>
+                <div data-id="4" class="cell unmarked"> </div>
+                <div data-id="5" class="cell unmarked"> </div>
+                <div data-id="6" class="cell unmarked"> </div>
+                <div data-id="7" class="cell unmarked"> </div>
+                <div data-id="8" class="cell unmarked"> </div>
+            </div>
+        </main>
+
+        <aside class="card-reveal">
+            <span class="card-title grey-text text-darken-4 left-align">
+                Close
+                <i class="material-icons right">close</i>
+            </span>
+
+            <div class="card-content">
+                <h5>
+                    New Game
+                </h5>
+                <form id="form" action="#" method="post" class="card-content">
+                    <div class="input-field">
+                        <input class="materialize-input center-align" type="text" name="player1"
+                            placeholder="Player 1 Name" maxlength="10">
+                    </div>
+                    <div class="input-field">
+                        <input class="materialize-input center-align" type="text" name="player1"
+                            placeholder="Player 2 Name" maxlength="10">
+                    </div>
+                    <div class="input-field">
+                        <button class="card-title  btn waves-effect waves-light" type="submit" name="action">
+                            Start
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </aside>
+
+        <footer>
+            <a href="https://github.com/Nazeh/tic-tac-toe-js" class="grey-text text-darken-4">
+                <img src="assets/images/github.png" alt="">
+                <div class="card-title ">Source</div>
+            </a>
+        </footer>
+    </div>
+    <script type="module" src="assets/scripts/app.js"></script> <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</body>
+
+</html>

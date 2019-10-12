@@ -1,0 +1,208 @@
+@mixin win {
+    color: red;
+
+    animation: win .3s ease-in-out 2;
+
+    @keyframes win {
+        0% {
+            transform: scale(1);
+            animation-timing-function: ease-out
+        }
+
+        50% {
+            transform: scale(.90);
+            animation-timing-function: ease-in
+        }
+
+        100% {
+            transform: scale(1);
+            animation-timing-function: ease-out
+        }
+    }
+}
+
+.card {
+    display: flex;
+    margin: auto;
+    min-height: 100vh;
+    max-width: 400px;
+    flex-direction: column;
+    box-shadow: none;
+}
+
+.card-reveal {
+    .btn {
+        margin: auto;
+        font-size: 14px;
+        font-weight: 400;
+        color: black;
+        background-color: white;
+        border: 2px solid black;
+        box-shadow: none;
+    }
+}
+
+header {
+    h1 {
+        font-family: 'Work Sans', sans-serif;
+        font-size: 2.5rem;
+        font-weight: bold;
+        letter-spacing: 6px;
+    }
+
+    .activator {
+        position: absolute;
+        width: 100%;
+        height: 156px;
+        cursor: pointer;
+    }
+
+    #players-info {
+        display: grid;
+        grid-template-columns: 1fr 4rem 1fr;
+        padding: 1rem;
+
+        >:nth-child(3) {
+            direction: rtl;
+        }
+
+        div {
+            display: grid;
+            grid-template-columns: 1rem auto auto;
+            height: 2rem;
+            font-weight: bold;
+            color: #aeaeae;
+
+            &.x {
+                .mark {
+                    &::before {
+                        content: 'x'
+                    }
+                }
+            }
+
+            &.o {
+                .mark {
+                    &::before {
+                        content: 'o'
+                    }
+                }
+            }
+
+            .mark {
+                font-family: 'Fredoka One', cursive;
+                font-weight: 100;
+                font-size: 2rem;
+                line-height: 1rem;
+
+
+            }
+        }
+
+        @mixin active-player {
+            border-bottom: 3px solid red;
+            color: black;
+        }
+
+        &.play {
+
+
+            &.x {
+                .x {
+                    @include active-player()
+                }
+            }
+
+            &.o {
+                .o {
+                    @include active-player()
+                }
+            }
+        }
+
+        &.win {
+            &.x {
+                .x {
+                    @include win()
+                }
+            }
+
+            &.o {
+                .o {
+                    @include win()
+                }
+            }
+        }
+    }
+}
+
+#board {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+
+    .cell {
+        padding-top: 100%;
+        border-radius: 10px;
+        position: relative;
+
+        &::before {
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            top: 0;
+            left: 0;
+            display: grid;
+            justify-content: center;
+            align-content: center;
+
+            content: "+";
+            font-size: 1.5rem;
+            color: #efefef;
+        }
+
+        &.marked {
+            &::before {
+                font-family: 'Fredoka One', cursive;
+                font-size: 9rem;
+                line-height: 1.5rem;
+            }
+
+            &.x {
+                &::before {
+                    content: "X";
+                }
+            }
+
+            &.o {
+                &::before {
+                    content: "O";
+                }
+            }
+
+            &.win {
+                &::before {
+                    @include win()
+                }
+            }
+        }
+    }
+
+    &.active {
+        .cell {
+            &::before {
+                color: black;
+            }
+
+            &.unmarked {
+                &:hover {
+                    &::before {
+                        font-family: 'Fredoka One', cursive;
+                        font-size: 5rem;
+                    }
+                }
+            }
+        }
+
+    }
+}
