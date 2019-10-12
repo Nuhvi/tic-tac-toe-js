@@ -7,11 +7,11 @@ const Game = (() => {
   let currentPlayer;
   let movesCount;
   let winningStreak;
-  let gameNotOver;
+  let gameOver;
 
   const getCurrentPlayer = () => currentPlayer;
   const getWinningStreak = () => winningStreak;
-  const getGameNotOver = () => gameNotOver;
+  const over = () => gameOver;
 
   const reset = (_p1, _p2) => {
     p1 = _p1;
@@ -19,7 +19,7 @@ const Game = (() => {
     currentPlayer = p1.getMark() === 'x' ? p1 : p2;
     movesCount = 0;
     winningStreak = null;
-    gameNotOver = true;
+    gameOver = false;
   };
 
   const threeInRow = (cell) => {
@@ -44,11 +44,11 @@ const Game = (() => {
     if (validMove(cell)) {
       Board.setCell(cell, currentPlayer.getMark());
       if (movesCount < 9) movesCount += 1;
-      if (threeInRow(cell) || movesCount >= 9) gameNotOver = false;
-      if (gameNotOver) {
-        switchPlayer();
-      } else {
+      if (threeInRow(cell) || movesCount >= 9) gameOver = true;
+      if (gameOver) {
         currentPlayer.updateScore();
+      } else {
+        switchPlayer();
       }
       return true;
     }
@@ -57,7 +57,7 @@ const Game = (() => {
 
 
   return {
-    getGameNotOver,
+    over,
     getCurrentPlayer,
     getWinningStreak,
     reset,

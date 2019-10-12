@@ -5,8 +5,8 @@ const UI = (() => {
 
   const getCells = () => cells;
 
-  const renderCell = (cell, mark) => {
-    cell.classList = `cell marked ${mark}`;
+  const renderCell = (cellId, mark) => {
+    cells[cellId].classList = `cell marked ${mark}`;
   };
 
   const resetBoard = () => {

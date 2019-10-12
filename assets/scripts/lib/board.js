@@ -1,6 +1,7 @@
 const Board = (() => {
   let state = Array(9);
 
+  const getState = () => state;
   const getCell = (cell) => state[cell];
 
   const setCell = (index, mark) => {
@@ -41,6 +42,7 @@ const Board = (() => {
 
 
   return {
+    getState,
     getCell,
     setCell,
     reset,

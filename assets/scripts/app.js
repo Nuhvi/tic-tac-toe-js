@@ -3,11 +3,14 @@ import Player from './lib/player.js';
 import UI from './lib/ui.js';
 import Game from './lib/game.js';
 import Board from './lib/board.js';
+import Bot from './lib/bot.js';
 
 let p1 = Player('Player 1', 'x');
-let p2 = Player('Player 2', 'o');
+let p2 = Player('easy bot', 'o');
 const cells = UI.getCells();
 const form = document.getElementById('form');
+const singlePlayer = true;
+
 
 const newGame = () => {
   Board.reset();
@@ -17,14 +20,20 @@ const newGame = () => {
   UI.highlightPlayer('x');
 };
 
-const play = (cell) => {
-  const cellId = cell.getAttribute('data-id');
+const thinkForSeconds = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
+const play = async (cellId) => {
+  if (cellId === 'fromBot') {
+    await thinkForSeconds(500);
+    cellId = Bot.nextMove(Board.getState());
+  }
+
   const currentMark = Game.getCurrentPlayer().getMark();
 
   if (Game.markCell(cellId)) {
-    UI.renderCell(cell, currentMark);
+    UI.renderCell(cellId, currentMark);
     UI.highlightPlayer(Game.getCurrentPlayer().getMark());
-    if (!Game.getGameNotOver()) {
+    if (Game.over()) {
       UI.deactivate();
       const winningStreak = Game.getWinningStreak();
       if (winningStreak) {
@@ -33,24 +42,26 @@ const play = (cell) => {
       }
       p1.switchMark();
       p2.switchMark();
-    }
+    } else if (singlePlayer && Game.getCurrentPlayer() === p2) play('fromBot');
   }
 };
 
+
 cells.forEach((cell) => {
   cell.addEventListener('click', () => {
-    if (Game.getGameNotOver()) {
-      play(cell);
-    } else {
+    if (Game.over()) {
       newGame();
+      if (singlePlayer && p2.getMark() === 'x') play('fromBot');
+    } else {
+      play(cell.getAttribute('data-id'));
     }
   });
 });
 
 form.addEventListener('submit', (e) => {
   e.preventDefault();
-  const name1 = form[0].value || 'Player 1';
-  const name2 = form[1].value || 'Player 2';
+  const name1 = form[0].value || 'player 1';
+  const name2 = form[1].value || 'player 2';
   form.reset();
   p1 = Player(name1, 'x');
   p2 = Player(name2, 'o');

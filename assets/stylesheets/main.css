@@ -44,6 +44,7 @@ header #players-info {
   -ms-grid-columns: 1fr 4rem 1fr;
       grid-template-columns: 1fr 4rem 1fr;
   padding: 1rem;
+  text-transform: uppercase;
 }
 
 header #players-info > :nth-child(3) {
@@ -73,6 +74,7 @@ header #players-info div .mark {
   font-weight: 100;
   font-size: 2rem;
   line-height: 1rem;
+  text-transform: lowercase;
 }
 
 header #players-info.play.x .x {
