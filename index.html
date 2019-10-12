@@ -18,19 +18,20 @@
 
 <body>
     <div class="card center-align">
-        <header class="activator">
-            <h1 class=" activator "> TIC TAC TOE </h1>
+        <header>
+            <div class="activator"></div>
+            <h1> TIC TAC TOE </h1>
             <div id="players-info" class="play p1">
-                <div id="p1" class="activator">
-                    <span class="activator">x</span>
-                    <span class="activator">Player 1</span>
-                    <span class="activator">0</span>
+                <div>
+                    <span class="mark ">x</span>
+                    <span>Player 1</span>
+                    <span>0</span>
                 </div>
                 <i class="material-icons ">tonality</i>
-                <div id="p2" class="activator">
-                    <span class="activator">o</span>
-                    <span class="activator">Player 2</span>
-                    <span class="activator">0</span>
+                <div>
+                    <span class="mark ">o</span>
+                    <span>Player 2</span>
+                    <span>$0</span>
                 </div>
             </div>
         </header>
@@ -50,25 +51,23 @@
         </main>
 
         <aside class="card-reveal">
-            <span class=" card-title grey-text text-darken-4 left-align">
+            <span class="card-title grey-text text-darken-4 left-align">
                 Close
                 <i class="material-icons right">close</i>
             </span>
 
             <div class="card-content">
-                <h5 >
+                <h5>
                     New Game
                 </h5>
-                <form id="form-two-p" action="#" method="post"  class="card-content">
+                <form id="form" action="#" method="post" class="card-content">
                     <div class="input-field">
-                        <input class="materialize-input center-align" type="text" 
-                        name="player1" placeholder="Player 1 Name"
-                            maxlength="10">
+                        <input class="materialize-input center-align" type="text" name="player1"
+                            placeholder="Player 1 Name" maxlength="10">
                     </div>
                     <div class="input-field">
-                        <input class="materialize-input center-align" type="text"
-                         name="player1" placeholder="Player 2 Name"
-                            maxlength="10">
+                        <input class="materialize-input center-align" type="text" name="player1"
+                            placeholder="Player 2 Name" maxlength="10">
                     </div>
                     <div class="input-field">
                         <button class="card-title  btn waves-effect waves-light" type="submit" name="action">

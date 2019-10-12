@@ -23,16 +23,16 @@ const UI = (() => {
 
   const updatePlayersInfo = (p1, p2) => {
     playersInfo.innerHTML = `
-    <div id="p1" class="activator">
-      <span class="activator">${p1.getMark()}</span>
-      <span class="activator">${p1.getName()}</span>
-      <span class="activator">${p1.getScore()}</span>
+    <div >
+    <span class="mark ">${p1.getMark()}</span>
+    <span >${p1.getName()}</span>
+    <span >${p1.getScore()}</span>
     </div>
     <i class="material-icons ">tonality</i>
-    <div id="p2" class="activator">
-      <span class="activator">${p2.getMark()}</span>
-      <span class="activator">${p2.getName()}</span>
-      <span class="activator">${p2.getScore()}</span>
+    <div >
+    <span class="mark ">${p2.getMark()}</span>
+    <span >${p2.getName()}</span>
+    <span >${p2.getScore()}</span>
     </div>`;
   };
 
