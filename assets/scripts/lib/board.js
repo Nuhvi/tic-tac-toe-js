@@ -1,11 +1,11 @@
 const Board = (() => {
   let state = Array(9);
 
-  const set = (index, mark) => {
+  const getCell = (cell) => state[cell];
+
+  const setCell = (index, mark) => {
     state[index] = mark;
   };
-
-  const getCell = (cell) => state[cell];
 
   const reset = () => {
     state = Array(9);
@@ -41,10 +41,10 @@ const Board = (() => {
 
 
   return {
-    set,
+    getCell,
+    setCell,
     reset,
     getRowColDiagonals,
-    getCell,
   };
 })();
 

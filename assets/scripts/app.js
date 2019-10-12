@@ -4,48 +4,36 @@ import UI from './lib/ui.js';
 import Game from './lib/game.js';
 import Board from './lib/board.js';
 
-let p1;
-let p2;
+let p1 = Player('Player 1', 'x');
+let p2 = Player('Player 2', 'o');
 const cells = UI.getCells();
 const form = document.getElementById('form');
 
-const newPlayers = () => {
-  p1 = Player('p1');
-  p2 = Player('p2');
-  Game.addPlayers(p1, p2);
-};
-
 const newGame = () => {
   Board.reset();
-  Game.reset();
+  Game.reset(p1, p2);
   UI.resetBoard();
   UI.updatePlayersInfo(p1, p2);
-  UI.highlightPlayer(Game.getCurrentPlayer());
-};
-
-const start = () => {
-  newPlayers();
-  newGame();
+  UI.highlightPlayer('x');
 };
 
 const play = (cell) => {
   const cellId = cell.getAttribute('data-id');
-  const lastPlayer = Game.getCurrentPlayer();
+  const currentMark = Game.getCurrentPlayer().getMark();
 
-  if (Game.markCell(cellId)) UI.renderCell(cell, lastPlayer.getMark());
-
-  if (Game.getGameNotOver()) {
-    UI.highlightPlayer(Game.getCurrentPlayer());
-  } else {
-    UI.deactivate();
-    const winningStreak = Game.getWinningStreak();
-    if (winningStreak) {
-      lastPlayer.updateScore();
-      UI.updatePlayersInfo(p1, p2);
-      UI.colorWinner(winningStreak, lastPlayer);
+  if (Game.markCell(cellId)) {
+    UI.renderCell(cell, currentMark);
+    UI.highlightPlayer(Game.getCurrentPlayer().getMark());
+    if (!Game.getGameNotOver()) {
+      UI.deactivate();
+      const winningStreak = Game.getWinningStreak();
+      if (winningStreak) {
+        UI.updatePlayersInfo(p1, p2);
+        UI.colorWinner(winningStreak, currentMark);
+      }
+      p1.switchMark();
+      p2.switchMark();
     }
-    p1.switchMark();
-    p2.switchMark();
   }
 };
 
@@ -61,13 +49,13 @@ cells.forEach((cell) => {
 
 form.addEventListener('submit', (e) => {
   e.preventDefault();
-  const name1 = form[0].value;
-  const name2 = form[1].value;
+  const name1 = form[0].value || 'Player 1';
+  const name2 = form[1].value || 'Player 2';
   form.reset();
-  start();
-  if (name1) p1.setName(name1);
-  if (name2) p2.setName(name2);
+  p1 = Player(name1, 'x');
+  p2 = Player(name2, 'o');
+  newGame();
   UI.updatePlayersInfo(p1, p2);
 });
 
-start();
+newGame();

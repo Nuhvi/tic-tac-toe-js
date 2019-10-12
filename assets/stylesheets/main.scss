@@ -30,6 +30,18 @@
     box-shadow: none;
 }
 
+.card-reveal {
+    .btn {
+        margin: auto;
+        font-size: 14px;
+        font-weight: 400;
+        color: black;
+        background-color: white;
+        border: 2px solid black;
+        box-shadow: none;
+    }
+}
+
 header {
     h1 {
         font-family: 'Work Sans', sans-serif;
@@ -56,16 +68,34 @@ header {
 
         div {
             display: grid;
-            grid-template-columns: 1rem auto  auto;
+            grid-template-columns: 1rem auto auto;
             height: 2rem;
             font-weight: bold;
             color: #aeaeae;
+
+            &.x {
+                .mark {
+                    &::before {
+                        content: 'x'
+                    }
+                }
+            }
+
+            &.o {
+                .mark {
+                    &::before {
+                        content: 'o'
+                    }
+                }
+            }
 
             .mark {
                 font-family: 'Fredoka One', cursive;
                 font-weight: 100;
                 font-size: 2rem;
                 line-height: 1rem;
+
+
             }
         }
 
@@ -77,28 +107,28 @@ header {
         &.play {
 
 
-            &.p1 {
-                >:nth-child(1) {
+            &.x {
+                .x {
                     @include active-player()
                 }
             }
 
-            &.p2 {
-                >:nth-child(3) {
+            &.o {
+                .o {
                     @include active-player()
                 }
             }
         }
 
         &.win {
-            &.p1 {
-                >:nth-child(1) {
+            &.x {
+                .x {
                     @include win()
                 }
             }
 
-            &.p2 {
-                >:nth-child(3) {
+            &.o {
+                .o {
                     @include win()
                 }
             }
@@ -110,7 +140,7 @@ header {
     position: relative;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    
+
     .cell {
         padding-top: 100%;
         border-radius: 10px;
@@ -174,17 +204,5 @@ header {
             }
         }
 
-    }
-}
-
-.card-reveal {
-    .btn {
-        margin: auto;
-        font-size: 14px;
-        font-weight: 400;
-        color: black;
-        background-color: white;
-        border: 2px solid black;
-        box-shadow: none;
     }
 }

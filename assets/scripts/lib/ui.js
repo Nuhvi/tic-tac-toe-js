@@ -21,31 +21,31 @@ const UI = (() => {
     playersInfo.classList = 'tie';
   };
 
+  const renderPlayerInfo = (p) => `
+    <div class="${p.getMark()}">
+      <span class="mark"></span>
+      <span >${p.getName()}</span>
+      <span >${p.getScore()}</span>
+    </div>`;
+
   const updatePlayersInfo = (p1, p2) => {
     playersInfo.innerHTML = `
-    <div >
-    <span class="mark ">${p1.getMark()}</span>
-    <span >${p1.getName()}</span>
-    <span >${p1.getScore()}</span>
-    </div>
-    <i class="material-icons ">tonality</i>
-    <div >
-    <span class="mark ">${p2.getMark()}</span>
-    <span >${p2.getName()}</span>
-    <span >${p2.getScore()}</span>
-    </div>`;
+      ${renderPlayerInfo(p1)}
+      <i class="material-icons ">tonality</i>
+      ${renderPlayerInfo(p2)}
+    `;
   };
 
-  const highlightPlayer = (currentPlayer) => {
-    playersInfo.classList = `play ${currentPlayer.getType()}`;
+  const highlightPlayer = (currentMark) => {
+    playersInfo.classList = `play ${currentMark}`;
   };
 
-  const colorWinner = (winningStreak, winnerPlayer) => {
+  const colorWinner = (winningStreak, winnerMark) => {
     winningStreak.forEach((i) => {
       cells[i].classList.add('win');
     });
 
-    playersInfo.classList = `win ${winnerPlayer.getType()}`;
+    playersInfo.classList = `win ${winnerMark}`;
   };
 
   return {

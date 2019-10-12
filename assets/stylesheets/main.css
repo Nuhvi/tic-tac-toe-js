@@ -13,6 +13,17 @@
           box-shadow: none;
 }
 
+.card-reveal .btn {
+  margin: auto;
+  font-size: 14px;
+  font-weight: 400;
+  color: black;
+  background-color: white;
+  border: 2px solid black;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
 header h1 {
   font-family: 'Work Sans', sans-serif;
   font-size: 2.5rem;
@@ -42,11 +53,19 @@ header #players-info > :nth-child(3) {
 header #players-info div {
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 1rem auto  auto;
-      grid-template-columns: 1rem auto  auto;
+  -ms-grid-columns: 1rem auto auto;
+      grid-template-columns: 1rem auto auto;
   height: 2rem;
   font-weight: bold;
   color: #aeaeae;
+}
+
+header #players-info div.x .mark::before {
+  content: 'x';
+}
+
+header #players-info div.o .mark::before {
+  content: 'o';
 }
 
 header #players-info div .mark {
@@ -56,17 +75,17 @@ header #players-info div .mark {
   line-height: 1rem;
 }
 
-header #players-info.play.p1 > :nth-child(1) {
+header #players-info.play.x .x {
   border-bottom: 3px solid red;
   color: black;
 }
 
-header #players-info.play.p2 > :nth-child(3) {
+header #players-info.play.o .o {
   border-bottom: 3px solid red;
   color: black;
 }
 
-header #players-info.win.p1 > :nth-child(1) {
+header #players-info.win.x .x {
   color: red;
   -webkit-animation: win .3s ease-in-out 2;
           animation: win .3s ease-in-out 2;
@@ -114,7 +133,7 @@ header #players-info.win.p1 > :nth-child(1) {
   }
 }
 
-header #players-info.win.p2 > :nth-child(3) {
+header #players-info.win.o .o {
   color: red;
   -webkit-animation: win .3s ease-in-out 2;
           animation: win .3s ease-in-out 2;
@@ -221,16 +240,5 @@ header #players-info.win.p2 > :nth-child(3) {
 #board.active .cell.unmarked:hover::before {
   font-family: 'Fredoka One', cursive;
   font-size: 5rem;
-}
-
-.card-reveal .btn {
-  margin: auto;
-  font-size: 14px;
-  font-weight: 400;
-  color: black;
-  background-color: white;
-  border: 2px solid black;
-  -webkit-box-shadow: none;
-          box-shadow: none;
 }
 /*# sourceMappingURL=main.css.map */
