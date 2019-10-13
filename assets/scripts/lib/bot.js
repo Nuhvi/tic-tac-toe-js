@@ -1,41 +1,47 @@
+import Board from './board.js';
+
 const Bot = (() => {
-  let difficulty = 0;
+  let difficulty = 1;
   const moves = [...Array(9).keys()];
 
-  const setDifficulty = (diff) => { difficulty = diff; };
-
-  const getValidMoves = (state) => moves.filter((i) => !state[i]);
-
-  const randomMove = (validMoves) => validMoves[
-    Math.floor(Math.random() * validMoves.length)
-  ];
-
-  //   const isWinningMove = () => {
-
-  //   };
-
-  const utilityFunction = () => 1;
-  // state[move] = currentMark;
-  // const validMoves = getValidMoves(state);
-  // if (isWinningMove(state, move)) return 1;
-  // if (validMoves.length === 1) return 0;
-
-  // return Math.max(
-  //   validMoves.map((move) => utilityFunction(state, move)),
-  // );
-
-  const bestMove = (state) => {
-    const validMoves = getValidMoves(state);
-    if (validMoves.length === 9) return randomMove([0, 2, 6, 8]);
-    if (validMoves.length === 1) return validMoves[0];
-
-    const utilities = validMoves.map((move) => utilityFunction(move));
-    return validMoves[utilities.indexOf((u) => u === Math.max(...utilities))];
+  const setDifficulty = (diff) => {
+    difficulty = diff;
   };
 
-  const pickMove = (state) => (
-    Math.random() >= difficulty ? randomMove(getValidMoves(state)) : bestMove(state)
-  );
+  const getAvailableMoves = (state) => moves.filter((i) => !state[i]);
+
+  const randomMove = (state) => {
+    const availableMoves = getAvailableMoves(state);
+    return availableMoves[Math.floor(Math.random() * availableMoves.length)];
+  };
+
+  const isaWin = (state, move, currentMark) => {
+    const winningCompination = Board.winningCompination(move, state);
+    return (winningCompination && state[winningCompination[0]] === currentMark);
+  };
+
+  const winnableMove = (state, currentMark) => {
+    console.log(state);
+
+    const moves = getAvailableMoves(state);
+    if (moves.length === 1 && isaWin(state, moves[0], currentMark)) return moves[0];
+
+    let move;
+    moves.some((move) => {
+      const stateAfterMove = state;
+      stateAfterMove[move] = currentMark;
+      currentMark = currentMark === 'x' ? 'o' : 'x';
+      move = winnableMove(stateAfterMove, currentMark);
+      return winnableMove;
+    });
+    return move;
+  };
+
+  const pickMove = (state, mark) => {
+    const origState = [...state];
+    return Math.random() >= difficulty ? randomMove(state)
+      : winnableMove(origState, mark) || randomMove(state);
+  };
 
   return {
     setDifficulty,

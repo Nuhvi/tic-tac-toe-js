@@ -1,8 +1,13 @@
-const Board = (state = Array(9)) => {
+const Board = (() => {
+  let state;
+
+  const isAvailable = (cellId) => !state[cellId];
+
   const getState = () => state;
-  const getCell = (cellId) => state[cellId];
 
   const setCell = (cellId, mark) => { state[cellId] = mark; };
+
+  const reset = () => { state = Array(9); };
 
   const getRow = (cellId) => {
     cellId = Math.floor(cellId / 3) * 3;
@@ -29,11 +34,11 @@ const Board = (state = Array(9)) => {
     return res.concat(getDiagonals(cellId));
   };
 
-  const checkWinningCompination = (cellId) => {
+  const winningCompination = (cellId, stateToCheck = state) => {
     let winningCompination;
     getRowColDiagonals(cellId).some((compination) => {
       if (
-        compination.map((i) => state[i]).every(
+        compination.map((i) => stateToCheck[i]).every(
           (val, i, arr) => val && val === arr[0],
         )
       ) winningCompination = compination;
@@ -45,10 +50,11 @@ const Board = (state = Array(9)) => {
 
   return {
     getState,
-    getCell,
+    isAvailable,
     setCell,
-    checkWinningCompination,
+    reset,
+    winningCompination,
   };
-};
+})();
 
 export default Board;
