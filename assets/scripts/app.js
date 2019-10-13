@@ -10,7 +10,6 @@ const cells = UI.getCells();
 const form = document.getElementById('form');
 const singlePlayer = true;
 
-
 const newGame = () => {
   Board.reset();
   Game.reset(p1, p2);
@@ -37,11 +36,11 @@ const play = async (cellId) => {
 
     if (Game.over()) {
       UI.deactivate();
-      const winningStreak = Game.getWinningStreak();
+      const winningCompination = Game.getWinningCompination();
 
-      if (winningStreak) {
+      if (winningCompination) {
         UI.updatePlayersInfo(p1, p2);
-        UI.colorWinner(winningStreak, currentMark);
+        UI.colorWinner(winningCompination, currentMark);
       }
       p1.switchMark();
       p2.switchMark();

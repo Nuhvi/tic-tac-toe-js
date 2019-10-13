@@ -11,9 +11,7 @@ const UI = (() => {
 
   const resetBoard = () => {
     board.classList.add('active');
-    cells.forEach((cell) => {
-      cell.classList = 'cell unmarked';
-    });
+    cells.forEach((cell) => { cell.classList = 'cell unmarked'; });
   };
 
   const deactivate = () => {
@@ -26,7 +24,8 @@ const UI = (() => {
       <span class="mark"></span>
       <span >${p.getName()}</span>
       <span >${p.getScore()}</span>
-    </div>`;
+    </div>
+    `;
 
   const updatePlayersInfo = (p1, p2) => {
     playersInfo.innerHTML = `
@@ -40,11 +39,8 @@ const UI = (() => {
     playersInfo.classList = `play ${currentMark}`;
   };
 
-  const colorWinner = (winningStreak, winnerMark) => {
-    winningStreak.forEach((i) => {
-      cells[i].classList.add('win');
-    });
-
+  const colorWinner = (winningCompination, winnerMark) => {
+    winningCompination.forEach((i) => { cells[i].classList.add('win'); });
     playersInfo.classList = `win ${winnerMark}`;
   };
 
