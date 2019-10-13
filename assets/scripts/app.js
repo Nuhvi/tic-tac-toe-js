@@ -1,4 +1,3 @@
-/* eslint-disable import/extensions */
 import Player from './lib/player.js';
 import UI from './lib/ui.js';
 import Game from './lib/game.js';
@@ -20,7 +19,9 @@ const newGame = () => {
   UI.highlightPlayer('x');
 };
 
-const thinkForSeconds = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+const thinkForSeconds = (ms) => new Promise((resolve) => {
+  setTimeout(resolve, ms);
+});
 
 const play = async (cellId) => {
   if (cellId === 'fromBot') {
@@ -44,7 +45,9 @@ const play = async (cellId) => {
       }
       p1.switchMark();
       p2.switchMark();
-    } else if (singlePlayer && Game.getCurrentPlayer() === p2) play('fromBot');
+    } else if (
+      singlePlayer && Game.getCurrentPlayer() === p2
+    ) play('fromBot');
   }
 };
 

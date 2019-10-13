@@ -1,4 +1,3 @@
-/* eslint-disable import/extensions */
 import Board from './board.js';
 
 const Game = (() => {
@@ -23,13 +22,11 @@ const Game = (() => {
   };
 
   const threeInRow = (cell) => {
-    Board.getRowColDiagonals(cell).forEach((arr) => {
-      if (arr.every((el) => Board.getCell(el) === currentPlayer.getMark())) {
-        winningStreak = arr;
-        // eslint-disable-next-line no-useless-return
-        return;
-      }
-    });
+    Board.getRowColDiagonals(cell).some(
+      (arr) => arr.every(
+        (el) => el === currentPlayer.getMark(),
+      ),
+    );
     return winningStreak;
   };
 
