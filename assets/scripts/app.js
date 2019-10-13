@@ -1,18 +1,19 @@
 import Player from './lib/player.js';
+import Board from './lib/board.js';
 import UI from './lib/ui.js';
 import Game from './lib/game.js';
-import Board from './lib/board.js';
 import Bot from './lib/bot.js';
 
 let p1 = Player('Player 1', 'x');
 let p2 = Player('normal bot', 'o');
+let board;
 const cells = UI.getCells();
 const form = document.getElementById('form');
 const singlePlayer = true;
 
 const newGame = () => {
-  Board.reset();
-  Game.reset(p1, p2);
+  board = Board();
+  Game.reset(p1, p2, board);
   UI.resetBoard();
   UI.updatePlayersInfo(p1, p2);
   UI.highlightPlayer('x');
@@ -25,7 +26,7 @@ const thinkForSeconds = (ms) => new Promise((resolve) => {
 const play = async (cellId) => {
   if (cellId === 'fromBot') {
     await thinkForSeconds(500);
-    cellId = Bot.pickMove(Board.getState());
+    cellId = Bot.pickMove(board.getState());
   }
 
   const currentMark = Game.getCurrentPlayer().getMark();

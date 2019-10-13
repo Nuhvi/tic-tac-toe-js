@@ -1,12 +1,8 @@
-const Board = (() => {
-  let state = Array(9);
-
+const Board = (state = Array(9)) => {
   const getState = () => state;
   const getCell = (cellId) => state[cellId];
 
   const setCell = (cellId, mark) => { state[cellId] = mark; };
-
-  const reset = () => { state = Array(9); };
 
   const getRow = (cellId) => {
     cellId = Math.floor(cellId / 3) * 3;
@@ -51,9 +47,8 @@ const Board = (() => {
     getState,
     getCell,
     setCell,
-    reset,
     checkWinningCompination,
   };
-})();
+};
 
 export default Board;
