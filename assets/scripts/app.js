@@ -6,7 +6,7 @@ import Board from './lib/board.js';
 import Bot from './lib/bot.js';
 
 let p1 = Player('Player 1', 'x');
-let p2 = Player('easy bot', 'o');
+let p2 = Player('normal bot', 'o');
 const cells = UI.getCells();
 const form = document.getElementById('form');
 const singlePlayer = true;
@@ -25,7 +25,7 @@ const thinkForSeconds = (ms) => new Promise((resolve) => setTimeout(resolve, ms)
 const play = async (cellId) => {
   if (cellId === 'fromBot') {
     await thinkForSeconds(500);
-    cellId = Bot.nextMove(Board.getState());
+    cellId = Bot.pickMove(Board.getState());
   }
 
   const currentMark = Game.getCurrentPlayer().getMark();
@@ -33,9 +33,11 @@ const play = async (cellId) => {
   if (Game.markCell(cellId)) {
     UI.renderCell(cellId, currentMark);
     UI.highlightPlayer(Game.getCurrentPlayer().getMark());
+
     if (Game.over()) {
       UI.deactivate();
       const winningStreak = Game.getWinningStreak();
+
       if (winningStreak) {
         UI.updatePlayersInfo(p1, p2);
         UI.colorWinner(winningStreak, currentMark);
