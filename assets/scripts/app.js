@@ -8,7 +8,7 @@ let p1 = Player('Player 1', 'x');
 let p2 = Player('normal bot', 'o');
 const cells = UI.getCells();
 const form = document.getElementById('form');
-const singlePlayer = true;
+let singlePlayer = true;
 
 const newGame = () => {
   Board.reset();
@@ -64,13 +64,23 @@ cells.forEach((cell) => {
 
 form.addEventListener('submit', (e) => {
   e.preventDefault();
-  const name1 = form[0].value || 'player 1';
-  const name2 = form[1].value || 'player 2';
-  form.reset();
+  const name1 = form[1].value || 'player 1';
   p1 = Player(name1, 'x');
-  p2 = Player(name2, 'o');
+
+  singlePlayer = !form[0].checked;
+  if (singlePlayer) {
+    p2 = Player(form[3].value, 'o');
+    Bot.setDifficulty(form[4].value);
+  } else {
+    const name2 = form[2].value || 'player 2';
+    p2 = Player(name2, 'o');
+  }
   newGame();
   UI.updatePlayersInfo(p1, p2);
+});
+
+document.getElementById('game-mode').addEventListener('change', () => {
+  UI.toggleFormGameMode();
 });
 
 newGame();

@@ -32,7 +32,7 @@ const Game = (() => {
     if (Board.getMarkedCells().includes(cellId)) return false;
 
     Board.setCell(cellId, currentPlayer.getMark());
-    if (Board.getMarkedCells().length >= 9 || gameIsWon(cellId)) {
+    if (gameIsWon(cellId) || Board.getMarkedCells().length >= 9) {
       gameOver = true;
     }
     if (winningCompination) {

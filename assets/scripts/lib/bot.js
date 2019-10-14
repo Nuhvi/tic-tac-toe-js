@@ -1,7 +1,7 @@
 import Board from './board.js';
 
 const Bot = (() => {
-  let difficulty = 1;
+  let difficulty = 0.6;
   let maxmizerMark;
   const moves = [...Array(9).keys()];
 

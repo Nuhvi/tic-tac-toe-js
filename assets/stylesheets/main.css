@@ -13,13 +13,19 @@
           box-shadow: none;
 }
 
-.card-reveal .btn {
+.btn {
   margin: auto;
   font-size: 14px;
   font-weight: 400;
   color: black;
   background-color: white;
   border: 2px solid black;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+.btn:hover {
+  background-color: white;
   -webkit-box-shadow: none;
           box-shadow: none;
 }
@@ -242,5 +248,28 @@ header #players-info.win.o .o {
 #board.active .cell.unmarked:hover::before {
   font-family: 'Fredoka One', cursive;
   font-size: 5rem;
+}
+
+aside .switch label {
+  font-size: .9rem;
+  color: #555;
+}
+
+aside .switch label #slider {
+  background-color: #eee;
+}
+
+aside .switch label #slider::after {
+  background-color: #555;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+aside .switch label #slider::before {
+  display: none;
+}
+
+aside span {
+  color: black !important;
 }
 /*# sourceMappingURL=main.css.map */

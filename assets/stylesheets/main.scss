@@ -30,14 +30,16 @@
     box-shadow: none;
 }
 
-.card-reveal {
-    .btn {
-        margin: auto;
-        font-size: 14px;
-        font-weight: 400;
-        color: black;
+.btn {
+    margin: auto;
+    font-size: 14px;
+    font-weight: 400;
+    color: black;
+    background-color: white;
+    border: 2px solid black;
+    box-shadow: none;
+    &:hover{
         background-color: white;
-        border: 2px solid black;
         box-shadow: none;
     }
 }
@@ -62,12 +64,12 @@ header {
         grid-template-columns: 1fr 4rem 1fr;
         padding: 1rem;
         text-transform: uppercase;
-        
-        
+
+
         >:nth-child(3) {
             direction: rtl;
         }
-        
+
         div {
             display: grid;
             grid-template-columns: 1rem auto auto;
@@ -206,5 +208,32 @@ header {
             }
         }
 
+    }
+}
+
+aside {
+
+    .switch {
+        label {
+            font-size: .9rem;
+            color: #555;
+
+            #slider {
+                background-color: #eee;
+
+                &::after {
+                    background-color: #555;
+                    box-shadow: none;
+                }
+
+                &::before {
+                    display: none;
+                }
+            }
+        }
+    }
+
+    span {
+        color: black !important;
     }
 }
