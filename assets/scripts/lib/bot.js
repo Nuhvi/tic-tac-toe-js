@@ -11,9 +11,6 @@ const Bot = (() => {
 
   const getAvailableMoves = (state) => moves.filter((i) => !state[i]);
 
-  const randomMove = (availableMoves) => availableMoves[
-    Math.floor(Math.random() * availableMoves.length)];
-
   const utility = (state, move) => {
     const hasWinningCompination = Board.winningCompination(move, state);
     if (hasWinningCompination) return state[move] === myMark ? 1 : -1;
@@ -39,14 +36,12 @@ const Bot = (() => {
   };
 
   const bestMove = (state, moves) => {
-    if (moves.length === 1) return moves[0];
-
     const utilities = moves.map((move) => miniMax(state, move, myMark));
-
-    const indexOfMaxUtility = utilities.indexOf(Math.max(...utilities));
-
-    return moves[indexOfMaxUtility];
+    return moves[utilities.indexOf(Math.max(...utilities))];
   };
+
+  const randomMove = (availableMoves) => availableMoves[
+    Math.floor(Math.random() * availableMoves.length)];
 
   const pickMove = (mark) => {
     myMark = mark;

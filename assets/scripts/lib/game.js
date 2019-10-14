@@ -4,24 +4,22 @@ const Game = (() => {
   let p1;
   let p2;
   let currentPlayer;
-  let movesCount;
   let winningCompination;
   let gameOver;
 
   const getCurrentPlayer = () => currentPlayer;
   const getWinningCompination = () => winningCompination;
-  const over = () => gameOver;
+  const isOver = () => gameOver;
 
   const reset = (_p1, _p2) => {
     p1 = _p1;
     p2 = _p2;
     currentPlayer = p1.getMark() === 'x' ? p1 : p2;
-    movesCount = 0;
     winningCompination = null;
     gameOver = false;
   };
 
-  const updateWinningCompination = (cellId) => {
+  const gameIsWon = (cellId) => {
     winningCompination = Board.winningCompination(cellId);
     return winningCompination;
   };
@@ -31,22 +29,22 @@ const Game = (() => {
   };
 
   const markCell = (cellId) => {
-    if (Board.isAvailable(cellId)) {
-      Board.setCell(cellId, currentPlayer.getMark());
-      if (movesCount < 9) movesCount += 1;
-      if (updateWinningCompination(cellId) || movesCount >= 9) gameOver = true;
-      if (gameOver) {
-        currentPlayer.updateScore();
-      } else {
-        switchPlayer();
-      }
-      return true;
+    if (Board.getMarkedCells().includes(cellId)) return false;
+
+    Board.setCell(cellId, currentPlayer.getMark());
+    if (Board.getMarkedCells().length >= 9 || gameIsWon(cellId)) {
+      gameOver = true;
     }
-    return false;
+    if (winningCompination) {
+      currentPlayer.updateScore();
+    } else {
+      switchPlayer();
+    }
+    return true;
   };
 
   return {
-    over,
+    isOver,
     getCurrentPlayer,
     getWinningCompination,
     reset,

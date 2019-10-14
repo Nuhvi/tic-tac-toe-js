@@ -34,7 +34,7 @@ const play = async (cellId) => {
     UI.renderCell(cellId, currentMark);
     UI.highlightPlayer(Game.getCurrentPlayer().getMark());
 
-    if (Game.over()) {
+    if (Game.isOver()) {
       UI.deactivate();
       const winningCompination = Game.getWinningCompination();
 
@@ -53,7 +53,7 @@ const play = async (cellId) => {
 
 cells.forEach((cell) => {
   cell.addEventListener('click', () => {
-    if (Game.over()) {
+    if (Game.isOver()) {
       newGame();
       if (singlePlayer && p2.getMark() === 'x') play('fromBot');
     } else {
