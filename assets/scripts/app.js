@@ -24,7 +24,7 @@ const thinkForSeconds = (ms) => new Promise((resolve) => {
 
 const play = async (cellId) => {
   if (cellId === 'fromBot') {
-    await thinkForSeconds(200);
+    await thinkForSeconds(150);
     cellId = Bot.pickMove(p2.getMark());
   }
 
