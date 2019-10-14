@@ -34,32 +34,23 @@ const Bot = (() => {
     const childrenUtility = nextMoves.map(
       (move) => miniMax(state, move, nextMark),
     );
-    // console.log(move, childrenUtility);
 
-    return currentMark === myMark ? Math.max(...childrenUtility) / childrenUtility.length : Math.min(...childrenUtility) / childrenUtility.length;
+    return currentMark !== myMark ? Math.max(...childrenUtility) : Math.min(...childrenUtility);
   };
 
   const bestMove = (state, moves) => {
-    if (moves.length === 9) return randomMove([0, 2, 6, 8]);
-    if (moves.length === 8) return 4;
     if (moves.length === 1) return moves[0];
 
     const utilities = moves.map((move) => miniMax(state, move, myMark));
 
     const indexOfMaxUtility = utilities.indexOf(Math.max(...utilities));
 
-    // console.log(moves, utilities, Math.max(...utilities));
     return moves[indexOfMaxUtility];
   };
 
-  const pickMove = () => {
-    myMark = 'o';
+  const pickMove = (mark) => {
+    myMark = mark;
     const state = Board.getState();
-    // const state = [
-    //   'x', 'x', null,
-    //   'o', 'o', null,
-    //   null, null, null,
-    // ];
     const availableMoves = getAvailableMoves(state);
     return Math.random() >= difficulty
       ? randomMove(availableMoves) : bestMove(state, availableMoves);
