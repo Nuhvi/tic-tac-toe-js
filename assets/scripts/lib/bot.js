@@ -16,65 +16,53 @@ const Bot = (() => {
 
   const utility = (state, move) => {
     const hasWinningCompination = Board.winningCompination(move, state);
-    if (hasWinningCompination) {
-      if (state[hasWinningCompination[0]] === myMark) return 1;
-      return -1;
-    }
+    if (hasWinningCompination) return state[move] === myMark ? 1 : -1;
     return null;
-  };
-
-  const minMax = (state, currentMark, move = null) => {
-    const moves = getAvailableMoves(state);
-    const currentUtility = utility(state, move, currentMark);
-    if (currentUtility) return currentUtility;
-    if (moves === 1) return 0;
-
-    const utilities = moves.map((move) => {
-      const stateAfterMove = [...state];
-      stateAfterMove[move] = currentMark;
-      const res = minMax(stateAfterMove, currentMark, move);
-      currentMark = currentMark === 'x' ? 'o' : 'x';
-      return res;
-    });
-
-    return Math.max(...utilities);
   };
 
   const miniMax = (_state, move, currentMark) => {
     const state = [..._state];
     state[move] = currentMark;
-    const moves = getAvailableMoves(state);
     const u = utility(state, move);
-    if (u) return u;
-    if (moves.length === 0) return 0;
-    console.log(move, moves, u);
+    if (u) { return u; }
+
+    const nextMoves = getAvailableMoves(state);
+    if (nextMoves.length === 0) return 0;
 
     const nextMark = currentMark === 'x' ? 'o' : 'x';
-    return Math.max(moves.map((move) => miniMax(state, move, nextMark)));
+
+    const childrenUtility = nextMoves.map(
+      (move) => miniMax(state, move, nextMark),
+    );
+    // console.log(move, childrenUtility);
+
+    return currentMark === myMark ? Math.max(...childrenUtility) / childrenUtility.length : Math.min(...childrenUtility) / childrenUtility.length;
   };
 
-  const bestMove = (origState, moves, mark) => {
-    const state = [...origState];
+  const bestMove = (state, moves) => {
     if (moves.length === 9) return randomMove([0, 2, 6, 8]);
+    if (moves.length === 8) return 4;
     if (moves.length === 1) return moves[0];
 
-    const utilities = moves.map((move) => miniMax(state, move, mark));
+    const utilities = moves.map((move) => miniMax(state, move, myMark));
+
     const indexOfMaxUtility = utilities.indexOf(Math.max(...utilities));
-    console.log(moves, utilities);
+
+    // console.log(moves, utilities, Math.max(...utilities));
     return moves[indexOfMaxUtility];
   };
 
   const pickMove = () => {
     myMark = 'o';
-    // const state = Board.getState();
-    const state = [
-      'x', 'x', null,
-      'o', null, null,
-      null, null, null,
-    ];
+    const state = Board.getState();
+    // const state = [
+    //   'x', 'x', null,
+    //   'o', 'o', null,
+    //   null, null, null,
+    // ];
     const availableMoves = getAvailableMoves(state);
     return Math.random() >= difficulty
-      ? randomMove(availableMoves) : bestMove(state, availableMoves, myMark);
+      ? randomMove(availableMoves) : bestMove(state, availableMoves);
   };
 
   return {

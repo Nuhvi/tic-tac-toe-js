@@ -76,3 +76,4 @@ form.addEventListener('submit', (e) => {
 newGame();
 
 console.log(Bot.pickMove());
+console.log(Board.getState());
