@@ -1,65 +1,52 @@
-/* eslint-disable import/extensions */
 import Board from './board.js';
 
 const Game = (() => {
   let p1;
   let p2;
   let currentPlayer;
-  let movesCount;
-  let winningStreak;
-  let gameNotOver;
+  let winningCompination;
+  let gameOver;
 
   const getCurrentPlayer = () => currentPlayer;
-  const getWinningStreak = () => winningStreak;
-  const getGameNotOver = () => gameNotOver;
+  const getWinningCompination = () => winningCompination;
+  const isOver = () => gameOver;
 
   const reset = (_p1, _p2) => {
     p1 = _p1;
     p2 = _p2;
     currentPlayer = p1.getMark() === 'x' ? p1 : p2;
-    movesCount = 0;
-    winningStreak = null;
-    gameNotOver = true;
+    winningCompination = null;
+    gameOver = false;
   };
 
-  const threeInRow = (cell) => {
-    Board.getRowColDiagonals(cell).forEach((arr) => {
-      if (arr.every((el) => Board.getCell(el) === currentPlayer.getMark())) {
-        winningStreak = arr;
-        // eslint-disable-next-line no-useless-return
-        return;
-      }
-    });
-    return winningStreak;
+  const gameIsWon = (cellId) => {
+    winningCompination = Board.winningCompination(cellId);
+    return winningCompination;
   };
-
 
   const switchPlayer = () => {
     currentPlayer = currentPlayer === p1 ? p2 : p1;
   };
 
-  const validMove = (cell) => !Board.getCell(cell);
+  const markCell = (cellId) => {
+    if (Board.getMarkedCells().includes(cellId)) return false;
 
-  const markCell = (cell) => {
-    if (validMove(cell)) {
-      Board.setCell(cell, currentPlayer.getMark());
-      if (movesCount < 9) movesCount += 1;
-      if (threeInRow(cell) || movesCount >= 9) gameNotOver = false;
-      if (gameNotOver) {
-        switchPlayer();
-      } else {
-        currentPlayer.updateScore();
-      }
-      return true;
+    Board.setCell(cellId, currentPlayer.getMark());
+    if (gameIsWon(cellId) || Board.getMarkedCells().length >= 9) {
+      gameOver = true;
     }
-    return false;
+    if (winningCompination) {
+      currentPlayer.updateScore();
+    } else {
+      switchPlayer();
+    }
+    return true;
   };
 
-
   return {
-    getGameNotOver,
+    isOver,
     getCurrentPlayer,
-    getWinningStreak,
+    getWinningCompination,
     reset,
     markCell,
   };

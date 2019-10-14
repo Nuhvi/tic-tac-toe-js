@@ -5,12 +5,8 @@ const Player = (name, mark) => {
   const getMark = () => mark;
   const getScore = () => score;
 
-  const updateScore = () => {
-    score += 1;
-  };
-  const switchMark = () => {
-    mark = mark === 'x' ? 'o' : 'x';
-  };
+  const updateScore = () => { score += 1; };
+  const switchMark = () => { mark = mark === 'x' ? 'o' : 'x'; };
 
   return {
     getName,

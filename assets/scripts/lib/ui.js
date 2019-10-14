@@ -2,11 +2,13 @@ const UI = (() => {
   const board = document.getElementById('board');
   const cells = Array.from(board.children);
   const playersInfo = document.getElementById('players-info');
+  const p2NameInput = document.getElementById('p2name');
+  const difficultyInput = document.getElementById('difficulty');
 
   const getCells = () => cells;
 
-  const renderCell = (cell, mark) => {
-    cell.classList = `cell marked ${mark}`;
+  const renderCell = (cellId, mark) => {
+    cells[cellId].classList = `cell marked ${mark}`;
   };
 
   const resetBoard = () => {
@@ -26,7 +28,8 @@ const UI = (() => {
       <span class="mark"></span>
       <span >${p.getName()}</span>
       <span >${p.getScore()}</span>
-    </div>`;
+    </div>
+    `;
 
   const updatePlayersInfo = (p1, p2) => {
     playersInfo.innerHTML = `
@@ -40,13 +43,18 @@ const UI = (() => {
     playersInfo.classList = `play ${currentMark}`;
   };
 
-  const colorWinner = (winningStreak, winnerMark) => {
-    winningStreak.forEach((i) => {
+  const colorWinner = (winningCompination, winnerMark) => {
+    winningCompination.forEach((i) => {
       cells[i].classList.add('win');
     });
-
     playersInfo.classList = `win ${winnerMark}`;
   };
+
+  const toggleFormGameMode = () => {
+    p2NameInput.classList.toggle('hide');
+    difficultyInput.classList.toggle('hide');
+  };
+
 
   return {
     getCells,
@@ -56,6 +64,7 @@ const UI = (() => {
     updatePlayersInfo,
     highlightPlayer,
     colorWinner,
+    toggleFormGameMode,
   };
 })();
 
