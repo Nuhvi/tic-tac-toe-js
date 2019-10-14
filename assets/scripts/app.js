@@ -25,9 +25,8 @@ const thinkForSeconds = (ms) => new Promise((resolve) => {
 const play = async (cellId) => {
   if (cellId === 'fromBot') {
     await thinkForSeconds(200);
-    cellId = Bot.pickMove(Board.getState(), p2.getMark());
+    cellId = Bot.pickMove(p2.getMark());
   }
-  console.log(Board.getState());
 
   const currentMark = Game.getCurrentPlayer().getMark();
 
@@ -75,3 +74,5 @@ form.addEventListener('submit', (e) => {
 });
 
 newGame();
+
+console.log(Bot.pickMove());
