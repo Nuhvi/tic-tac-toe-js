@@ -19,20 +19,15 @@ const newGame = () => {
   UI.highlightPlayer('x');
 };
 
-const thinkForSeconds = (ms) => new Promise((resolve) => {
-  setTimeout(resolve, ms);
-});
 
-const play = async (cellId) => {
-  if (cellId === 'fromBot') {
-    await thinkForSeconds(200);
-    cellId = Bot.pickMove(p2.getMark());
-  }
-
+const play = (cellId) => {
   const currentMark = Game.getCurrentPlayer().getMark();
-
   if (Game.markCell(cellId)) {
-    if (currentMark === 'x') { Sfx.tick(); } else { Sfx.tock(); }
+    if (currentMark === 'x') {
+      Sfx.tick();
+    } else {
+      Sfx.tock();
+    }
     UI.renderCell(cellId, currentMark);
     UI.highlightPlayer(Game.getCurrentPlayer().getMark());
 
@@ -46,10 +41,18 @@ const play = async (cellId) => {
       }
       p1.switchMark();
       p2.switchMark();
-    } else if (
-      singlePlayer && Game.getCurrentPlayer() === p2
-    ) play('fromBot');
+    }
   }
+};
+
+const thinkForSeconds = (ms) => new Promise((resolve) => {
+  setTimeout(resolve, ms);
+});
+
+const playBot = async () => {
+  await thinkForSeconds(200);
+  const cellId = Bot.pickMove(p2.getMark());
+  play(cellId);
 };
 
 
@@ -57,9 +60,10 @@ cells.forEach((cell) => {
   cell.addEventListener('click', () => {
     if (Game.isOver()) {
       newGame();
-      if (singlePlayer && p2.getMark() === 'x') play('fromBot');
+      if (singlePlayer && p2.getMark() === 'x') playBot();
     } else {
       play(cell.getAttribute('data-id'));
+      if (singlePlayer) playBot();
     }
   });
 });
