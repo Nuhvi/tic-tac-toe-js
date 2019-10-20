@@ -50,11 +50,10 @@ const UI = (() => {
     playersInfo.classList = `win ${winnerMark}`;
   };
 
-  const toggleFormGameMode = () => {
+  document.getElementById('game-mode').addEventListener('change', () => {
     p2NameInput.classList.toggle('hide');
     difficultyInput.classList.toggle('hide');
-  };
-
+  });
 
   return {
     getCells,
@@ -64,7 +63,6 @@ const UI = (() => {
     updatePlayersInfo,
     highlightPlayer,
     colorWinner,
-    toggleFormGameMode,
   };
 })();
 
