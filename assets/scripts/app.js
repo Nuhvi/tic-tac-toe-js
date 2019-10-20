@@ -5,11 +5,13 @@ import Game from './lib/game.js';
 import Bot from './lib/bot.js';
 import Sfx from './lib/sfx.js';
 
+
 let p1 = Player('Player 1', 'x');
 let p2 = Player('normal bot', 'o');
 const cells = UI.getCells();
 const form = document.getElementById('form');
 let singlePlayer = true;
+Sfx.initialize();
 
 const newGame = () => {
   Board.reset();
@@ -18,7 +20,6 @@ const newGame = () => {
   UI.updatePlayersInfo(p1, p2);
   UI.highlightPlayer('x');
 };
-
 
 const play = (cellId) => {
   const currentMark = Game.getCurrentPlayer().getMark();
@@ -45,25 +46,27 @@ const play = (cellId) => {
   }
 };
 
-const thinkForSeconds = (ms) => new Promise((resolve) => {
-  setTimeout(resolve, ms);
-});
+const thinkForSeconds = (ms) =>
+  new Promise((resolve) => {
+    setTimeout(resolve, ms);
+  });
 
 const playBot = async () => {
-  await thinkForSeconds(200);
-  const cellId = Bot.pickMove(p2.getMark());
-  play(cellId);
+  if (singlePlayer) {
+    await thinkForSeconds(200);
+    const cellId = Bot.pickMove(p2.getMark());
+    play(cellId);
+  }
 };
-
 
 cells.forEach((cell) => {
   cell.addEventListener('click', () => {
     if (Game.isOver()) {
       newGame();
-      if (singlePlayer && p2.getMark() === 'x') playBot();
+      if (p2.getMark() === 'x') playBot();
     } else {
       play(cell.getAttribute('data-id'));
-      if (singlePlayer) playBot();
+      if (!Game.isOver()) playBot();
     }
   });
 });
