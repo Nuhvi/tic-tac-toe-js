@@ -61,11 +61,10 @@ const Bot = (() => {
     const utilities = availableMoves.map((move) => miniMax({
       state: originalState,
       move,
-      depth: Math.max(difficulty * 8, 1),
+      depth: Math.ceil(difficulty * 7) + 1,
       currentMark: maxmizerMark,
       maximzeUtility: false,
     }));
-    console.log(Math.max(difficulty * 8, 1), utilities);
 
     return randomBestMove({ utilities, availableMoves });
   };
