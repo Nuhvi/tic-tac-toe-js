@@ -51,7 +51,6 @@
         </main>
 
         <aside class="card-reveal">
-
             <span class="card-title grey-text text-darken-4 left-align">
                 Close
                 <i class="material-icons right">close</i>
@@ -70,26 +69,28 @@
                             Two Players
                         </label>
                     </div>
+                    <div class="inputs">
+                        <div class="input-field">
+                            <input class="materialize-input red-text center-align" type="text" name="player1"
+                                maxlength="10">
+                            <label class="grey-text">Player Name</label>
+                        </div>
+                        <div class="input-field hide" id="p2name">
+                            <input class="materialize-input red-text center-align" type="text" name="player2"
+                                maxlength="10">
+                            <label class="grey-text">Player 2 Name</label>
+                        </div>
+                        <div class="input-field" id='difficulty'>
+                            <select class="input-field">
+                                <option value=".3">Easy Bot</option>
+                                <option value="0.6">Medium Bot</option>
+                                <option value="1">Hard Bot</option>
+                            </select>
+                            <label>Difficulty</label>
+                        </div>
+                    </div>
                     <div class="input-field">
-                        <input class="materialize-input red-text center-align" type="text" name="player1"
-                            maxlength="10">
-                        <label class="grey-text">Player Name</label>
-                    </div>
-                    <div class="input-field hide" id="p2name">
-                        <input class="materialize-input red-text center-align" type="text" name="player2"
-                            maxlength="10" >
-                        <label class="grey-text">Player 2 Name</label>
-                    </div>
-                    <div class="input-field" id='difficulty'>
-                        <select>
-                            <option value=".3">Easy Bot</option>
-                            <option value="0.6">Medium Bot</option>
-                            <option value="1">Hard Bot</option>
-                        </select>
-                        <label>Difficulty</label>
-                    </div>
-                    <div class="input-field">
-                        <button class="card-title  btn waves-effect waves-light" type="submit" name="action">
+                        <button class="card-title waves-effect waves-light" type="submit" name="action">
                             Start
                         </button>
                     </div>
