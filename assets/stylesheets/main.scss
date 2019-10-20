@@ -1,22 +1,23 @@
-@mixin winAnimation {
+@mixin win {
     color: red;
-    animation: pop .3s ease-in-out 2;
-}
 
-@keyframes pop {
-    0% {
-        transform: scale(1);
-        animation-timing-function: ease-out
-    }
+    animation: win .3s ease-in-out 2;
 
-    50% {
-        transform: scale(.90);
-        animation-timing-function: ease-in
-    }
+    @keyframes win {
+        0% {
+            transform: scale(1);
+            animation-timing-function: ease-out
+        }
 
-    100% {
-        transform: scale(1);
-        animation-timing-function: ease-out
+        50% {
+            transform: scale(.90);
+            animation-timing-function: ease-in
+        }
+
+        100% {
+            transform: scale(1);
+            animation-timing-function: ease-out
+        }
     }
 }
 
@@ -29,11 +30,18 @@
     box-shadow: none;
 }
 
-button {
+.btn {
     margin: auto;
     font-size: 14px;
+    font-weight: 400;
+    color: black;
     background-color: white;
     border: 2px solid black;
+    box-shadow: none;
+    &:hover{
+        background-color: white;
+        box-shadow: none;
+    }
 }
 
 header {
@@ -119,13 +127,13 @@ header {
         &.win {
             &.x {
                 .x {
-                    @include winAnimation()
+                    @include win()
                 }
             }
 
             &.o {
                 .o {
-                    @include winAnimation()
+                    @include win()
                 }
             }
         }
@@ -158,8 +166,6 @@ header {
         }
 
         &.marked {
-            animation: pop .1s ease-in-out 1;
-
             &::before {
                 font-family: 'Fredoka One', cursive;
                 font-size: 9rem;
@@ -180,7 +186,7 @@ header {
 
             &.win {
                 &::before {
-                    @include winAnimation()
+                    @include win()
                 }
             }
         }
@@ -206,9 +212,6 @@ header {
 }
 
 aside {
-    .inputs {
-        height: 110px;
-    }
 
     .switch {
         label {

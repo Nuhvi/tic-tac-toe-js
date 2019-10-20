@@ -1,4 +1,4 @@
-const Player = ({ name, mark }) => {
+const Player = (name, mark) => {
   let score = 0;
 
   const getName = () => name;
