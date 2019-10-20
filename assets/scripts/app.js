@@ -5,7 +5,6 @@ import Game from './lib/game.js';
 import Bot from './lib/bot.js';
 import Sfx from './lib/sfx.js';
 
-
 let p1 = Player('Player 1', 'x');
 let p2 = Player('normal bot', 'o');
 const cells = UI.getCells();
@@ -46,10 +45,9 @@ const play = (cellId) => {
   }
 };
 
-const thinkForSeconds = (ms) =>
-  new Promise((resolve) => {
-    setTimeout(resolve, ms);
-  });
+const thinkForSeconds = (ms) => new Promise((resolve) => {
+  setTimeout(resolve, ms);
+});
 
 const playBot = async () => {
   if (singlePlayer) {
