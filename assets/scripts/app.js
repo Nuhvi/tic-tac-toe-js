@@ -23,24 +23,25 @@ const newGame = () => {
 const play = (cellId) => {
   const currentMark = Game.getCurrentPlayer().getMark();
   if (Game.markCell(cellId)) {
-    if (currentMark === 'x') {
-      Sfx.tick();
-    } else {
-      Sfx.tock();
-    }
     UI.renderCell(cellId, currentMark);
     UI.highlightPlayer(Game.getCurrentPlayer().getMark());
+
 
     if (Game.isOver()) {
       UI.deactivate();
       const winningCompination = Game.getWinningCompination();
 
       if (winningCompination) {
+        Sfx.win();
         UI.updatePlayersInfo(p1, p2);
         UI.colorWinner(winningCompination, currentMark);
       }
       p1.switchMark();
       p2.switchMark();
+    } else if (currentMark === 'x') {
+      Sfx.tick();
+    } else {
+      Sfx.tock();
     }
   }
 };
