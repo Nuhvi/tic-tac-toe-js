@@ -1,42 +1,49 @@
-# Tic Tac Toe
+<h1 align="center">Welcome to Tic Tac Toe js 👋</h1>
+<p>
+  <a href="https://github.com/Nazeh/tic-tac-toe-js/blob/master/README.md" target="_blank">
+    <img alt="Documentation" src="https://img.shields.io/badge/documentation-yes-brightgreen.svg" />
+  </a>
+  <a href="https://github.com/Nazeh/tic-tac-toe-js/blob/master/LICENSE" target="_blank">
+    <img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-yellow.svg" />
+  </a>
+  <a href="https://twitter.com/arnazeh" target="_blank">
+    <img alt="Twitter: arnazeh" src="https://img.shields.io/twitter/follow/arnazeh.svg?style=social" />
+  </a>
+</p>
 
-This project is part of a series of projects to be completed by students of [Microverse](https://www.microverse.org/ "The Global School for Remote Software Developers!").
+> Vanilla JS TicTacToe game
 
-Thi is a collaborative project by [Ar Nazeh](https://github.com/Nazeh) and [Ebuka Umeokonkwo](https://github.com/ebukaume). The full project description can be found [here](https://www.theodinproject.com/courses/javascript/lessons/tic-tac-toe-javascript). It is a JavaScript implementation of the popular [TicTacToe game](https://playtictactoe.org/).
+### ✨ [Demo](https://nazeh.github.io/tic-tac-toe-js/)
 
-## Built With
+<img alt='screenshot' src='docs/screenshot.webp'>
 
-- JavaScript
-- HMTL
-- SCSS
-- Materialize
+## Features
 
-## Usage
+- Multiplayer mode
+- Single player mode
+- MinMax algorith with 3 levels of difficulty.
+- Simulating computer thinking delay.
+- Clean minimalist design.
+- Sound effects.
 
-The live version of the webapp can be found [here](https://raw.githack.com/Nazeh/tic-tac-toe-js/tictactoe/index.html)
+## Author
 
-> Clone the repository to your local machine
+👤 **Nazeh**
 
-```sh
-$ git clone https://github.com/Nazeh/tic-tac-toe.git
-```
+* Website: Nazeh.me
+* Twitter: [@arnazeh](https://twitter.com/arnazeh)
+* Github: [@nazeh](https://github.com/nazeh)
+* LinkedIn: [@arnazeh](https://linkedin.com/in/arnazeh)
 
-> cd into the directory
+## 🤝 Contributing
 
-```sh
-$ cd tic-tac-toe
-```
+Contributions, issues and feature requests are welcome!<br />Feel free to check [issues page](https://github.com/Nazeh/tic-tac-toe-js/issues). 
 
-> Open `index.html` using your favourite broswer: 
+## Show your support
 
-## Contributing
+Give a ⭐️ if this project helped you!
 
-1. Fork it (https://github.com/Nazeh/tic-tac-toe/fork)
-2. Create your feature branch (git checkout -b feature/[choose-a-name])
-3. Commit your changes (git commit -am 'what this commit will fix/add')
-4. Push to the branch (git push origin feature/[chosen-name])
-5. Create a new Pull Request
+## 📝 License
 
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](./LICENSE) file for details
+Copyright © 2020 [Nazeh](https://github.com/nazeh).<br />
+This project is [MIT](https://github.com/Nazeh/tic-tac-toe-js/blob/master/LICENSE) licensed.
