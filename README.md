@@ -20,8 +20,8 @@
 ## Features
 
 - Multiplayer mode
-- Single player mode
-- MinMax algorith with 3 levels of difficulty.
+- Single-player mode
+- MinMax algorithm with 3 levels of difficulty.
 - Simulating computer thinking delay.
 - Clean minimalist design.
 - Sound effects.
@@ -37,7 +37,7 @@
 
 ## 🤝 Contributing
 
-Contributions, issues and feature requests are welcome!<br />Feel free to check [issues page](https://github.com/Nazeh/tic-tac-toe-js/issues). 
+Contributions, issues, and feature requests are welcome!<br />Feel free to check [issues page](https://github.com/Nazeh/tic-tac-toe-js/issues). 
 
 ## Show your support
 
