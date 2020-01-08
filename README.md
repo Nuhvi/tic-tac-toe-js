@@ -30,7 +30,7 @@
 
 👤 **Nazeh**
 
-* Website: Nazeh.me
+* Website: [Nazeh.me](https://www.nazeh.me/)
 * Twitter: [@arnazeh](https://twitter.com/arnazeh)
 * Github: [@nazeh](https://github.com/nazeh)
 * LinkedIn: [@arnazeh](https://linkedin.com/in/arnazeh)
