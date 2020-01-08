@@ -26,6 +26,21 @@
 - Clean minimalist design.
 - Sound effects.
 
+## Install
+
+```sh
+git clone git@github.com:Nazeh/tic-tac-toe-js.git
+cd tic-tac-toe-js
+npm install
+npm run build
+```
+
+## Usage
+
+```sh
+npm start
+```
+
 ## Author
 
 👤 **Nazeh**
